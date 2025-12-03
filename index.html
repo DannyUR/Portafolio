@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio Creativo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-theme="light">
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#inicio" class="logo">
+                    <i class="fas fa-code"></i>
+                    MiPortafolio
+                </a>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#sobre-mi">Sobre Mí</a></li>
+                    <li><a href="#habilidades">Skills</a></li> 
+                    <li><a href="#herramientas">Tools</a></li> 
+                    <li><a href="#habilidades-personales">Soft Skills</a></li> 
+                    <li><a href="#educacion">Educación</a></li>
+                    <li><a href="#logros">Logros</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#hobbies">Hobbies</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hola, soy <span>Daniela Uscanga</span></h1>
+                <p>Estudiante de Ingeniería en Sistemas construyendo habilidades en desarrollo web, con curiosidad por
+                    la IA y el diseño digital</p>
+                <div class="hero-btns">
+                    <a href="#proyectos" class="btn">Ver Mis Proyectos</a>
+                    <a href="#contacto" class="btn btn-outline">Contactar</a>
+                </div>
+            </div>
+        </div>
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre-mi" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Mí</h2>
+                <p>Conoce más sobre mis intereses, objetivos y pasiones</p>
+            </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="./img/Perfil.jpeg" alt="Foto de perfil">
+                </div>
+                <div class="about-text">
+                    <h3>Estudiante de Ingeniería en Sistemas Computacionales</h3>
+                    <p>Como estudiante de Ingeniería en Sistemas, he canalizado mi interés por la tecnología
+                        hacia el desarrollo web práctico. A lo largo de mi formación, he construido diversas
+                        plataformas y aplicaciones web que me han permitido aplicar conceptos teóricos
+                        en proyectos tangibles.</p>
+                    <p>Mi enfoque se centra en el desarrollo full-stack, abarcando tanto la experiencia
+                        de usuario (frontend) como la lógica de servidor y bases de datos (backend).
+                        Cada proyecto representa una oportunidad para refinar mis habilidades y explorar
+                        nuevas aproximaciones técnicas.</p>
+                    <p>Creo firmemente en el aprendizaje basado en proyectos y en mantenerme actualizado
+                        con las últimas tendencias del desarrollo web, siempre buscando equilibrar innovación
+                        con fundamentos sólidos de ingeniería.</p>
+
+                    <div class="about-details">
+                        <div class="detail-item">
+                            <h4><i class="fas fa-graduation-cap"></i> Educación</h4>
+                            <p>Actualmente en Ingeniería en Sistemas</p>
+                        </div>
+                        <div class="detail-item">
+                            <h4><i class="fas fa-map-marker-alt"></i> Ubicación</h4>
+                            <p>Nuevo Casas Grandes, Chihuahua</p>
+                        </div>
+                        <div class="detail-item">
+                            <h4><i class="fas fa-language"></i> Idiomas</h4>
+                            <p>Español (Nativo), Inglés (Básico)</p>
+                        </div>
+                        <div class="detail-item">
+                            <h4><i class="fas fa-briefcase"></i> Disponibilidad</h4>
+                            <p>Prácticas / Medio tiempo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="habilidades" class="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mis Habilidades Técnicas</h2>
+                <p>Tecnologías y lenguajes de programación que manejo</p>
+            </div>
+            <div class="skills-content">
+                <div class="skills-category">
+                    <h3><i class="fas fa-code"></i> Frontend</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>HTML/CSS</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>JavaScript</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>React</span>
+                            <span>40%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="40"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Bootstrap</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3><i class="fas fa-server"></i> Backend</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>PHP</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Laravel</span>
+                            <span>40%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="40"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>MySQL / MariaDB</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="herramientas" class="tools">
+        <div class="container">
+            <div class="section-title">
+                <h2>Herramientas que Utilizo</h2>
+                <p>Software y aplicaciones que manejo en mis proyectos</p>
+            </div>
+            <div class="tools-grid">
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>Arduino IDE</h3>
+                            <div class="tool-percentage">60%</div>
+                        </div>
+                    </div>
+                    <p class="tool-description">Desarrollo de proyectos de electrónica y programación de
+                        microcontroladores</p>
+                    <div class="tool-skill-bar">
+                        <div class="tool-skill-progress" data-width="70"></div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>Terminal/CLI</h3>
+                            <div class="tool-percentage">75%</div>
+                        </div>
+                    </div>
+                    <p class="tool-description">Comandos Linux, gestión de archivos, Git por línea de comandos y scripts
+                        básicos</p>
+                    <div class="tool-skill-bar">
+                        <div class="tool-skill-progress" data-width="75"></div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>Visual Studio Code</h3>
+                            <div class="tool-percentage">90%</div>
+                        </div>
+                    </div>
+                    <p class="tool-description">Editor de código principal para desarrollo web y programación</p>
+                    <div class="tool-skill-bar">
+                        <div class="tool-skill-progress" data-width="90"></div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fab fa-figma"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>Figma</h3>
+                            <div class="tool-percentage">75%</div>
+                        </div>
+                    </div>
+                    <p class="tool-description">Diseño de interfaces, prototipado y colaboración en diseño</p>
+                    <div class="tool-skill-bar">
+                        <div class="tool-skill-progress" data-width="75"></div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>Adobe Illustrator</h3>
+                            <div class="tool-percentage">60%</div>
+                        </div>
+                    </div>
+                    <p class="tool-description">Diseño vectorial, ilustración digital y creación de gráficos</p>
+                    <div class="tool-skill-bar">
+                        <div class="tool-skill-progress" data-width="65"></div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>Blender</h3>
+                            <div class="tool-percentage">30%</div>
+                        </div>
+                    </div>
+                    <p class="tool-description">Modelado 3D básico, en proceso de aprendizaje</p>
+                    <div class="tool-skill-bar">
+                        <div class="tool-skill-progress" data-width="30"></div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fab fa-git-alt"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>GitHub</h3>
+                            <div class="tool-percentage">80%</div>
+                        </div>
+                    </div>
+                    <p class="tool-description">Control de versiones, colaboración y despliegue de proyectos</p>
+                    <div class="tool-skill-bar">
+                        <div class="tool-skill-progress" data-width="80"></div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-file-excel"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>Microsoft Office</h3>
+                            <div class="tool-percentage">85%</div>
+                        </div>
+                    </div>
+                    <p class="tool-description">Word, Excel, PowerPoint - Uso avanzado para documentación</p>
+                    <div class="tool-skill-bar">
+                        <div class="tool-skill-progress" data-width="85"></div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>Canva</h3>
+                            <div class="tool-percentage">90%</div>
+                        </div>
+                    </div>
+                    <p class="tool-description">Diseño gráfico, presentaciones y contenido visual</p>
+                    <div class="tool-skill-bar">
+                        <div class="tool-skill-progress" data-width="90"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Skills Section -->
+    <section id="habilidades-personales" class="personal-skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Habilidades Personales</h2>
+                <p>Características que definen mi forma de trabajar</p>
+            </div>
+            <div class="personal-skills-grid">
+                <div class="personal-skill-card">
+                    <div class="personal-skill-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>Responsable</h3>
+                    <p>Cumplimiento de plazos y compromiso con la calidad del trabajo</p>
+                </div>
+                <div class="personal-skill-card">
+                    <div class="personal-skill-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Aprendizaje Rápido</h3>
+                    <p>Capacidad para adaptarme y aprender nuevas tecnologías rápidamente</p>
+                </div>
+                <div class="personal-skill-card">
+                    <div class="personal-skill-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Aprendizaje Visual</h3>
+                    <p>Mejor comprensión a través de ejemplos visuales y práctica</p>
+                </div>
+                <div class="personal-skill-card">
+                    <div class="personal-skill-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Trabajo en Equipo</h3>
+                    <p>Colaboración efectiva en proyectos grupales</p>
+                </div>
+                <div class="personal-skill-card">
+                    <div class="personal-skill-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Trabajo Individual</h3>
+                    <p>Autonomía y capacidad para trabajar de manera independiente</p>
+                </div>
+                <div class="personal-skill-card">
+                    <div class="personal-skill-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Reservado</h3>
+                    <p>Enfoque en el trabajo, comunicación cuando es necesaria</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="educacion" class="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mi Educación</h2>
+                <p>Mi trayectoria académica y formaciones</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 2022 - Presente</div>
+                        <h3>Ingeniería en Sistemas Computacionales</h3>
+                        <p>Universidad [Instituto Tecnolólogico Superior de Nuevo Casas Grandes]</p>
+                        <p>Cursando actualmente con especial interés en desarrollo web, bases de datos
+                            e inteligencia artificial.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+
+                </div>
+                <div class="timeline-item">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Achievements Section -->
+    <section id="logros" class="achievements">
+        <div class="container">
+            <div class="section-title">
+                <h2>Logros Académicos</h2>
+                <p>Certificaciones obtenidas</p>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Certificaciones Cisco</h3>
+                    <p>CCNA: Introducción a las redes</p>
+                    <p>Fecha de emisión: 28 abr 2025</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Certificaciones Cisco</h3>
+                    <p>Linux Unhatched</p>
+                    <p>Fecha de emisión: 28 abr 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="proyectos" class="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mis Proyectos</h2>
+                <p>Algunos de los trabajos que he desarrollado</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="./img/RadioClick.png" alt="Proyecto 1">
+                    </div>
+                    <div class="project-content">
+                        <h3>RadioClick - Prototipo de Plataforma de Podcast</h3>
+                        <p>Estado: En desarrollo | Año: 2024</p>
+                        <p>Sitio web para descubrir y escuchar podcast. Proyecto inicial de aprendizaje que me permitió
+                            consolidar fundamentos de desarrollo web front-end.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                        </div>
+                        <a href="https://github.com/DannyUR/RadioClick" class="btn">Ver en GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="./img/Velamar.png" alt="Proyecto 2">
+                    </div>
+                    <div class="project-content">
+                        <h3>Velamar</h3>
+                        <p>Estado: Completo | Año: 2025 </p>
+                        <p>Plataforma web para la administración y visualización de departamentos en Residencias
+                            Velamar.
+                            Proyecto desarrollado en colaboración, permitiendo al administrador gestionar datos mediante
+                            un panel
+                            administrativo
+                            y al cliente consultar información mediante una interfaz intuitiva.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">PHP</span>
+                            <span class="project-tag">Booststrap</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">MariaDB</span>
+                        </div>
+                        <a href="https://github.com/MagdielD901/velamar" class="btn">Ver en GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="./img/ArtMood.png" alt="Proyecto 3">
+                    </div>
+                    <div class="project-content">
+                        <h3>ArtMood</h3>
+                        <p>Estado: En desarrollo | Año: 2025 </p>
+                        <p>Aplicación web interactiva donde artistas pueden compartir ilustraciones, fotografías y obras
+                            digitales asociadas a emociones específicas. Fomenta la expresión creativa y conexión entre
+                            creadores mediante comentarios y reacciones visuales.</p>
+                        <p>Proyecto desarrollado en colaboración.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">MySQL</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">PHP</span>
+                            <span class="project-tag">Laravel</span>
+                        </div>
+                        <a href="https://github.com/DannyUR/ArtMood" class="btn">Ver en GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hobbies Section -->
+    <section id="hobbies" class="hobbies">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mis Hobbies</h2>
+                <p>Actividades que disfruto en mi tiempo libre</p>
+            </div>
+            <div class="hobbies-grid">
+                <div class="hobby-card">
+                    <div class="hobby-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Dibujo</h3>
+                    <p>Me encanta expresar mi creatividad a través del dibujo tradicional y digital.</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">
+                        <i class="fas fa-futbol"></i>
+                    </div>
+                    <h3>Fútbol</h3>
+                    <p>Disfruto jugar fútbol y trabajar en equipo para alcanzar objetivos comunes.</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Videojuegos</h3>
+                    <p>Apasionado por los videojuegos, especialmente los de estrategia y rol.</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>IA y Tecnología</h3>
+                    <p>Me interesa explorar herramientas de IA para mejorar mi aprendizaje y proyectos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galeria" class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galería</h2>
+                <p>Algunos de mis trabajos y momentos destacados</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="./img/MacetaInteligente.png" alt="Proyecto 1">
+                    <div class="gallery-overlay">
+                        <h3>Maceta Inteligente</h3>
+                        <p>Prototipo de maceta inteligente con Arduino</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="./img/AdobeIllustrator.png" alt="Proyecto 2">
+                    <div class="gallery-overlay">
+                        <h3>Adobe Illustrator</h3>
+                        <p>Vectoriza tu Personaje Favorito en Adobe Illustrator</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="./img/Plataforma.png" alt="Proyecto 3">
+                    <div class="gallery-overlay">
+                        <h3>Clickteam Fusion 2.5 developer</h3>
+                        <p>Crear un Juego de Plataforma con Fusion 2.5</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contacto</h2>
+                <p>¿Tienes alguna pregunta o propuesta? ¡Hablemos!</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Ubicación</h3>
+                            <p>Nuevo Casas Grandes, Chihuahua</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>uscangadaniela9@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Teléfono</h3>
+                            <p>+52 636 109 9492</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>GitHub</h3>
+                            <p>github.com/DannyUR</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - Nuevo Diseño -->
+    <footer>
+        <div class="container">
+            <div class="footer-cta">
+                <h3>¿Listo para trabajar juntos?</h3>
+                <p>Estoy siempre abierto a nuevas oportunidades y proyectos interesantes</p>
+                <a href="#contacto" class="btn">Contáctame</a>
+            </div>
+
+            <div class="footer-content">
+                <div class="footer-column footer-about">
+                    <h3>Mi Portafolio</h3>
+                    <p>Como estudiante de Ingeniería en Sistemas, he encontrado mi pasión en el desarrollo web,
+                        donde combino creatividad y lógica para construir experiencias digitales.
+                        Mientras perfecciono mis habilidades full-stack, mantengo una curiosidad activa
+                        por la inteligencia artificial, viéndola como el próximo horizonte en mi crecimiento
+                        profesional.
+
+                        Mi enfoque es práctico: transformar problemas en soluciones web eficientes,
+                        siempre con la mente abierta a aprender tecnologías emergentes.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/DannyUR" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                        <li><a href="#sobre-mi"><i class="fas fa-chevron-right"></i> Sobre Mí</a></li>
+                        <li><a href="#habilidades"><i class="fas fa-chevron-right"></i> Habilidades</a></li>
+                        <li><a href="#proyectos"><i class="fas fa-chevron-right"></i> Proyectos</a></li>
+                        <li><a href="#contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 Mi Portafolio Creativo. Todos los derechos reservados. | Diseñado con ❤️ y mucho código
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
