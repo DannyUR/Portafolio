@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniela Uscanga - CV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a192f 0%, #1e3a5f 100%);
+            padding: 40px 24px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cv {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+        }
+
+        .cv-inner {
+            display: grid;
+            grid-template-columns: 290px 1fr;
+        }
+
+        /* Panel izquierdo */
+        .cv-left {
+            background: linear-gradient(180deg, #0a192f 0%, #1e3a5f 100%);
+            padding: 35px 24px;
+            color: #e6e9f0;
+        }
+
+        .avatar {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .avatar img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(180, 169, 212, 0.5);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cv-left h3 {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #b8a9d4;
+            margin: 20px 0 12px 0;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(180, 169, 212, 0.25);
+        }
+
+        .cv-left h3:first-of-type {
+            margin-top: 0;
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.7rem;
+            word-break: break-word;
+        }
+
+        .contact-list li i {
+            width: 18px;
+            color: #b8a9d4;
+            font-size: 0.8rem;
+        }
+
+        .edu-item {
+            margin-bottom: 14px;
+        }
+
+        .edu-item h4 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .edu-date {
+            font-size: 0.65rem;
+            color: #9aa4bf;
+            margin-bottom: 4px;
+        }
+
+        .edu-item p {
+            font-size: 0.7rem;
+            color: #c8d0e0;
+            line-height: 1.4;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-tag {
+            background: rgba(180, 169, 212, 0.12);
+            padding: 3px 10px;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            color: #b8a9d4;
+        }
+
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.75rem;
+        }
+
+        .lang-name {
+            font-weight: 500;
+        }
+
+        .lang-level {
+            color: #b8a9d4;
+            font-size: 0.65rem;
+        }
+
+        /* Panel derecho */
+        .cv-right {
+            background: #ffffff;
+            padding: 35px 30px;
+        }
+
+        .cv-header {
+            margin-bottom: 22px;
+            border-bottom: 3px solid #b8a9d4;
+            padding-bottom: 15px;
+        }
+
+        .cv-header h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #0a192f;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }
+
+        .cv-header h1 span {
+            background: linear-gradient(135deg, #4a2c6d, #b8a9d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cv-header .subtitle {
+            font-size: 0.8rem;
+            color: #6b7280;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .cv-header .bio {
+            font-size: 0.75rem;
+            color: #4b5563;
+            line-height: 1.5;
+        }
+
+        .section {
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #0a192f;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .section-title i {
+            color: #b8a9d4;
+            font-size: 0.8rem;
+        }
+
+        .cert {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .cert:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .cert-name {
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: #1f2937;
+        }
+
+        .cert-date {
+            font-size: 0.65rem;
+            color: #9ca3af;
+        }
+
+        .cert-issuer {
+            font-size: 0.65rem;
+            color: #b8a9d4;
+            margin-top: 2px;
+        }
+
+        .tools-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .tool-badge {
+            background: #f3f4f6;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            color: #374151;
+        }
+
+        .soft-badge {
+            background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: #4a2c6d;
+        }
+
+        .availability-box {
+            background: #f8f9fa;
+            padding: 12px 16px;
+            border-radius: 16px;
+            border-left: 4px solid #b8a9d4;
+        }
+
+        .availability-box p {
+            font-size: 0.7rem;
+            color: #4b5563;
+            margin-bottom: 4px;
+        }
+
+        .availability-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #b8a9d4, #d4a5a5);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            color: #0a192f;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 100;
+            font-family: inherit;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        /* ============================================ */
+        /* CSS ESPECÍFICO PARA IMPRESIÓN (1 hoja) */
+        /* ============================================ */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .print-btn {
+                display: none;
+            }
+            
+            .cv {
+                max-width: 100%;
+                margin: 0;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .cv-inner {
+                display: grid;
+                grid-template-columns: 270px 1fr;
+            }
+            
+            /* Ajustes de espaciado para que quepa */
+            .cv-left {
+                padding: 15px 18px;
+            }
+            
+            .cv-right {
+                padding: 15px 22px;
+            }
+            
+            .avatar img {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .avatar {
+                margin-bottom: 15px;
+            }
+            
+            .cv-left h3 {
+                margin: 12px 0 8px 0;
+                font-size: 0.65rem;
+            }
+            
+            .contact-list li {
+                margin-bottom: 6px;
+                font-size: 0.65rem;
+            }
+            
+            .edu-item {
+                margin-bottom: 10px;
+            }
+            
+            .edu-item h4 {
+                font-size: 0.7rem;
+            }
+            
+            .skill-tag {
+                padding: 2px 8px;
+                font-size: 0.6rem;
+            }
+            
+            .cv-header {
+                margin-bottom: 12px;
+                padding-bottom: 8px;
+            }
+            
+            .cv-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .cv-header .bio {
+                font-size: 0.65rem;
+            }
+            
+            .section {
+                margin-bottom: 12px;
+            }
+            
+            .section-title {
+                margin-bottom: 8px;
+                font-size: 0.7rem;
+            }
+            
+            .cert {
+                margin-bottom: 6px;
+                padding-bottom: 4px;
+            }
+            
+            .cert-name {
+                font-size: 0.7rem;
+            }
+            
+            .tool-badge, .soft-badge {
+                padding: 3px 10px;
+                font-size: 0.6rem;
+            }
+            
+            .availability-box {
+                padding: 8px 12px;
+            }
+            
+            .availability-box p {
+                font-size: 0.65rem;
+                margin-bottom: 3px;
+            }
+            
+            /* Opcional: ocultar el QR en la impresión para ahorrar espacio */
+            .cv-left div:last-child {
+                display: none;
+            }
+        }
+
+        @media (max-width: 750px) {
+            body {
+                padding: 20px;
+            }
+            .cv-inner {
+                grid-template-columns: 1fr;
+            }
+            .print-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 10px 18px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cv">
+    <div class="cv-inner">
+        <!-- PANEL IZQUIERDO -->
+        <div class="cv-left">
+            <div class="avatar">
+                <img src="./img/Perfil.jpeg" alt="Daniela Uscanga">
+            </div>
+
+            <h3>CONTACTO</h3>
+            <ul class="contact-list">
+                <li><i class="fas fa-envelope"></i> uscangadaniela9@gmail.com</li>
+                <li><i class="fas fa-phone-alt"></i> +52 636 109 9492</li>
+                <li><i class="fas fa-map-marker-alt"></i> Nuevo Casas Grandes, Chihuahua</li>
+                <li><i class="fab fa-github"></i> github.com/DannyUR</li>
+            </ul>
+
+            <h3>EDUCACIÓN</h3>
+            <div class="edu-item">
+                <h4>Ingeniería en Sistemas Computacionales</h4>
+                <div class="edu-date">2022 - Presente</div>
+                <p>Instituto Tecnológico Superior de Nuevo Casas Grandes</p>
+            </div>
+
+            <h3>HABILIDADES TÉCNICAS</h3>
+            <div class="skills-tags">
+                <span class="skill-tag">HTML/CSS</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">Bootstrap</span>
+                <span class="skill-tag">PHP</span>
+                <span class="skill-tag">Laravel</span>
+                <span class="skill-tag">MySQL/MariaDB</span>
+                <span class="skill-tag">Git/GitHub</span>
+            </div>
+
+            <h3>IDIOMAS</h3>
+            <div class="lang-item">
+                <span class="lang-name">Español</span>
+                <span class="lang-level">Nativo</span>
+            </div>
+            <div class="lang-item">
+                <span class="lang-name">Inglés</span>
+                <span class="lang-level">Básico</span>
+            </div>
+
+            <h3>HOBBIES</h3>
+            <div class="skills-tags">
+                <span class="skill-tag">Dibujo</span>
+                <span class="skill-tag">Fútbol</span>
+                <span class="skill-tag">Videojuegos</span>
+                <span class="skill-tag">IA y Tecnología</span>
+                <span class="skill-tag">Manualidades</span>
+            </div>
+
+            <!-- BOTÓN + QR PARA PORTAFOLIO -->
+            <div style="background: rgba(180, 169, 212, 0.08); border-radius: 16px; padding: 12px; margin-top: 18px; text-align: center;">
+                <p style="font-size: 0.6rem; color: #b8a9d4; margin-bottom: 10px; letter-spacing: 1px;">
+                    <i class="fas fa-folder-open"></i> PORTAFOLIO
+                </p>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                    <a href="https://dannyur.github.io/portafolio" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #b8a9d4, #d4a5a5); color: #0a192f; padding: 5px 14px; border-radius: 40px; text-decoration: none; font-size: 0.65rem; font-weight: 600;">
+                        <i class="fas fa-external-link-alt"></i> Visitar
+                    </a>
+                    <div style="text-align: center;">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=45x45&data=https://dannyur.github.io/portafolio" alt="QR Portafolio" style="width: 40px; height: 40px; border-radius: 8px; background: white; padding: 2px;">
+                        <p style="font-size: 0.45rem; color: #9aa4bf; margin-top: 2px;">Escanear</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANEL DERECHO -->
+        <div class="cv-right">
+            <div class="cv-header">
+                <h1>Daniela <span>Uscanga</span></h1>
+                <div class="subtitle">Estudiante de Ingeniería en Sistemas</div>
+                <div class="bio">
+                    Apasionada por el desarrollo web, la inteligencia artificial y el diseño digital. 
+                    Combino la lógica de la programación con un enfoque creativo para construir 
+                    experiencias digitales únicas. Busco oportunidades de prácticas donde pueda 
+                    seguir desarrollando mis habilidades full-stack.
+                </div>
+            </div>
+
+            <!-- CERTIFICACIONES -->
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-certificate"></i>
+                    <span>CERTIFICACIONES</span>
+                </div>
+                <div class="cert">
+                    <div>
+                        <div class="cert-name">CCNA: Introducción a las redes</div>
+                        <div class="cert-issuer">Cisco Networking Academy</div>
+                    </div>
+                    <div class="cert-date">2025</div>
+                </div>
+                <div class="cert">
+                    <div>
+                        <div class="cert-name">Linux Unhatched</div>
+                        <div class="cert-issuer">Cisco Networking Academy</div>
+                    </div>
+                    <div class="cert-date">2025</div>
+                </div>
+                <div class="cert">
+                    <div>
+                        <div class="cert-name">Fundamentos de IA</div>
+                        <div class="cert-issuer">IBM SkillsBuild / Cisco</div>
+                    </div>
+                    <div class="cert-date">2026</div>
+                </div>
+            </div>
+
+            <!-- HERRAMIENTAS -->
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-tools"></i>
+                    <span>HERRAMIENTAS</span>
+                </div>
+                <div class="tools-grid">
+                    <span class="tool-badge">VS Code</span>
+                    <span class="tool-badge">Figma</span>
+                    <span class="tool-badge">Illustrator</span>
+                    <span class="tool-badge">Blender</span>
+                    <span class="tool-badge">Arduino IDE</span>
+                    <span class="tool-badge">Android Studio</span>
+                    <span class="tool-badge">CapCut/Filmora</span>
+                    <span class="tool-badge">Adobe Animate</span>
+                    <span class="tool-badge">MediBang/Krita</span>
+                    <span class="tool-badge">Clip Studio Paint</span>
+                    <span class="tool-badge">Canva</span>
+                    <span class="tool-badge">MS Office</span>
+                </div>
+            </div>
+
+            <!-- HABILIDADES PERSONALES -->
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-heart"></i>
+                    <span>HABILIDADES PERSONALES</span>
+                </div>
+                <div class="tools-grid">
+                    <span class="soft-badge">Responsable</span>
+                    <span class="soft-badge">Aprendizaje Rápido</span>
+                    <span class="soft-badge">Aprendizaje Visual</span>
+                    <span class="soft-badge">Trabajo en Equipo</span>
+                    <span class="soft-badge">Autonomía</span>
+                    <span class="soft-badge">Reservado</span>
+                    <span class="soft-badge">Creatividad</span>
+                </div>
+            </div>
+
+            <!-- DISPONIBILIDAD -->
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-briefcase"></i>
+                    <span>DISPONIBILIDAD</span>
+                </div>
+                <div class="availability-box">
+                    <p>• Prácticas profesionales | Freelance</p>
+                    <p>• Incorporación: junio 2026</p>
+                    <p>• Horario flexible</p>
+                    <p>• Horas y duración a convenir con la empresa</p>
+                    <p>• Base en Nuevo Casas Grandes, Chihuahua</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button class="print-btn" onclick="window.print()">
+    <i class="fas fa-print"></i> Guardar como PDF
+</button>
+
+</body>
+</html>

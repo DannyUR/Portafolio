@@ -3,641 +3,1281 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio Creativo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Daniela Uscanga | Mystic Tech Studio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0a192f;
+            --navy-light: #1e3a5f;
+            --navy-glow: rgba(10, 25, 47, 0.6);
+            --purple-deep: #4a2c6d;
+            --lavender: #b8a9d4;
+            --lavender-light: #d4c9e8;
+            --rose-dusty: #d4a5a5;
+            --rose-light: #e8cece;
+            --gold-soft: #d4af7a;
+            --cream: #f5e6e8;
+            --white-soft: #f0edf5;
+            --text-light: #e6e9f0;
+            --text-muted: #9aa4bf;
+            --text-dark: #1a1a2e;
+            --success: #6b9e7a;
+            --warning: #d4a55a;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--purple-deep) 100%);
+            color: var(--text-light);
+            line-height: 1.5;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Efecto de estrellas/nébula */
+        .nebula {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(180, 169, 212, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(212, 165, 165, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 40% 80%, rgba(212, 175, 122, 0.05) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Partículas brillantes */
+        .star {
+            position: fixed;
+            background: var(--lavender);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.4;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 32px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.4s ease;
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(180, 169, 212, 0.2);
+        }
+
+        header.scrolled {
+            padding: 12px 0;
+            background: rgba(10, 25, 47, 0.95);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--lavender), var(--gold-soft), var(--rose-dusty));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+        }
+
+        /* Botones acción */
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .icon-btn {
+            background: rgba(180, 169, 212, 0.1);
+            border: 1px solid rgba(180, 169, 212, 0.3);
+            padding: 8px 18px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        .icon-btn:hover {
+            background: rgba(180, 169, 212, 0.2);
+            border-color: var(--gold-soft);
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        /* Navegación */
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+            background: rgba(10, 25, 47, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 6px;
+            border-radius: 60px;
+            border: 1px solid rgba(180, 169, 212, 0.2);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.8rem;
+            padding: 8px 22px;
+            border-radius: 40px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-light);
+            background: rgba(180, 169, 212, 0.1);
+        }
+
+        .nav-links a.active {
+            color: var(--navy);
+            background: linear-gradient(135deg, var(--lavender), var(--rose-dusty));
+            box-shadow: 0 2px 10px rgba(180, 169, 212, 0.3);
+        }
+
+        /* Secciones */
+        .section {
+            display: none;
+            min-height: 100vh;
+            padding: 130px 0 80px;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .section.active-section {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            min-height: calc(100vh - 130px);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(180, 169, 212, 0.15);
+            border: 1px solid rgba(180, 169, 212, 0.3);
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--lavender);
+            margin-bottom: 28px;
+        }
+
+        .hero-badge::before {
+            content: '✦';
+            color: var(--gold-soft);
+        }
+
+        .hero-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.2rem;
+            font-weight: 600;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--lavender), var(--gold-soft), var(--rose-dusty));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.85rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--lavender), var(--rose-dusty));
+            color: var(--navy);
+            box-shadow: 0 4px 15px rgba(180, 169, 212, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(180, 169, 212, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid rgba(180, 169, 212, 0.4);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold-soft);
+            background: rgba(180, 169, 212, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Imagen hero con efecto místico */
+        .hero-image-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%;
+            overflow: hidden;
+            animation: floatGlow 8s ease-in-out infinite;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(180, 169, 212, 0.2);
+        }
+
+        @keyframes floatGlow {
+            0%, 100% { transform: translateY(0px); border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%; }
+            50% { transform: translateY(-12px); border-radius: 55% 45% 60% 40% / 50% 55% 45% 50%; }
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, transparent 50%, rgba(74, 44, 109, 0.2) 100%);
+            pointer-events: none;
+        }
+
+        /* Títulos sección */
+        .section-header {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--lavender);
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 550px;
+            margin: 12px auto 0;
+            font-size: 0.9rem;
+        }
+
+        /* Cards grid */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+
+        .card-mystic {
+            background: rgba(30, 58, 95, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(180, 169, 212, 0.15);
+            border-radius: 28px;
+            padding: 28px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .card-mystic:hover {
+            border-color: rgba(180, 169, 212, 0.4);
+            transform: translateY(-6px);
+            background: rgba(30, 58, 95, 0.6);
+        }
+
+        .card-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(180, 169, 212, 0.15);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+        }
+
+        .card-icon i {
+            font-size: 1.5rem;
+            color: var(--lavender);
+        }
+
+        .card-mystic h3 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .card-mystic p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Timeline educación */
+        .timeline-section {
+            margin-top: 20px;
+        }
+
+        .timeline-modern {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background: rgba(30, 58, 95, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(180, 169, 212, 0.2);
+            border-radius: 32px;
+            padding: 40px;
+            position: relative;
+            border-left: 5px solid var(--lavender);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-date {
+            color: var(--gold-soft);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 122, 0.15);
+            padding: 4px 16px;
+            border-radius: 40px;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .timeline-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Skills con barras */
+        .skills-wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .skill-card {
+            background: rgba(30, 58, 95, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(180, 169, 212, 0.15);
+            border-radius: 28px;
+            padding: 32px;
+        }
+
+        .skill-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .skill-card h3 i {
+            color: var(--lavender);
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-item span {
+            display: block;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            height: 6px;
+            background: rgba(180, 169, 212, 0.15);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--lavender), var(--rose-dusty));
+            border-radius: 10px;
+            width: 0;
+            transition: width 1s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        /* Tools grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 50px;
+        }
+
+        .tool-card {
+            background: rgba(30, 58, 95, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(180, 169, 212, 0.15);
+            border-radius: 20px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            border-color: rgba(180, 169, 212, 0.4);
+            transform: translateX(5px);
+        }
+
+        .tool-card i {
+            font-size: 1.3rem;
+            color: var(--lavender);
+            width: 35px;
+        }
+
+        .tool-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .tool-card p {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* Soft skills */
+        .soft-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .soft-card {
+            background: rgba(30, 58, 95, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(180, 169, 212, 0.15);
+            border-radius: 24px;
+            padding: 28px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .soft-card:hover {
+            border-color: rgba(180, 169, 212, 0.4);
+            transform: translateY(-4px);
+        }
+
+        .soft-card i {
+            font-size: 2rem;
+            color: var(--lavender);
+            margin-bottom: 14px;
+        }
+
+        .soft-card h4 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .soft-card p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Certificados */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cert-card {
+            background: rgba(30, 58, 95, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(180, 169, 212, 0.15);
+            border-radius: 24px;
+            padding: 28px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .cert-card:hover {
+            border-color: rgba(180, 169, 212, 0.4);
+            transform: translateY(-4px);
+        }
+
+        .cert-card i {
+            font-size: 2rem;
+            color: var(--lavender);
+            margin-bottom: 14px;
+        }
+
+        .cert-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .cert-card p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Proyectos */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: rgba(30, 58, 95, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(180, 169, 212, 0.15);
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(180, 169, 212, 0.4);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-img {
+            aspect-ratio: 16/10;
+            overflow: hidden;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 24px;
+        }
+
+        .project-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .project-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        .status-completed {
+            background: rgba(107, 158, 122, 0.2);
+            color: var(--success);
+            border: 1px solid rgba(107, 158, 122, 0.3);
+        }
+
+        .status-dev {
+            background: rgba(212, 165, 90, 0.2);
+            color: var(--warning);
+            border: 1px solid rgba(212, 165, 90, 0.3);
+        }
+
+        .project-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        .project-tag {
+            background: rgba(180, 169, 212, 0.15);
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            color: var(--lavender);
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold-soft);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: gap 0.3s;
+        }
+
+        .project-link:hover {
+            gap: 12px;
+        }
+
+        /* Hobbies + Galería */
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .hobby-card {
+            background: rgba(30, 58, 95, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(180, 169, 212, 0.15);
+            border-radius: 24px;
+            padding: 28px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .hobby-card:hover {
+            border-color: rgba(180, 169, 212, 0.4);
+            transform: translateY(-4px);
+        }
+
+        .hobby-card i {
+            font-size: 2rem;
+            color: var(--lavender);
+            margin-bottom: 14px;
+        }
+
+        .hobby-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+            border: 1px solid rgba(180, 169, 212, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(10, 25, 47, 0.95));
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.7rem;
+            color: var(--lavender);
+        }
+
+        /* Contacto simplificado */
+        .contact-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 22px;
+            background: rgba(30, 58, 95, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(180, 169, 212, 0.15);
+            border-radius: 24px;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            border-color: rgba(180, 169, 212, 0.4);
+            transform: translateX(8px);
+        }
+
+        .contact-card i {
+            font-size: 1.5rem;
+            color: var(--lavender);
+        }
+
+        .contact-card h4 {
+            font-size: 0.75rem;
+            margin-bottom: 4px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .contact-card p {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .grid-4, .skills-wrapper, .tools-grid, .soft-grid, .projects-grid, .hobbies-grid, .gallery-grid, .certs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 45px;
+            }
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-btns {
+                justify-content: center;
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 20px;
+                right: 20px;
+                flex-direction: column;
+                background: var(--navy);
+                border-radius: 28px;
+                padding: 20px;
+                gap: 12px;
+                border: 1px solid rgba(180, 169, 212, 0.2);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links a {
+                text-align: center;
+            }
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 20px;
+            }
+            .grid-4, .skills-wrapper, .tools-grid, .soft-grid, .projects-grid, .hobbies-grid, .gallery-grid, .certs-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            .action-buttons {
+                order: 2;
+            }
+            .timeline-item {
+                padding: 24px;
+            }
+            .timeline-item h3 {
+                font-size: 1.2rem;
+            }
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
-<body data-theme="light">
-    <!-- Header -->
+<body>
+
+    <!-- Nébula de fondo -->
+    <div class="nebula"></div>
+
+    <!-- Estrellas generadas por JS -->
+    <div id="stars-container"></div>
+
     <header>
         <div class="container">
             <nav class="navbar">
-                <a href="#inicio" class="logo">
-                    <i class="fas fa-code"></i>
-                    MiPortafolio
-                </a>
-                <div class="menu-toggle">
-                    <i class="fas fa-bars"></i>
+                <a href="#" class="logo">D.USCANGA</a>
+                <div class="action-buttons">
+                    <button class="icon-btn" id="downloadCV"><i class="fas fa-download"></i> CV</button>
+                    <button class="icon-btn" id="languageToggle"><i class="fas fa-globe"></i> <span id="langText">ES</span></button>
                 </div>
+                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
                 <ul class="nav-links">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#sobre-mi">Sobre Mí</a></li>
-                    <li><a href="#habilidades">Skills</a></li> 
-                    <li><a href="#herramientas">Tools</a></li> 
-                    <li><a href="#habilidades-personales">Soft Skills</a></li> 
-                    <li><a href="#educacion">Educación</a></li>
-                    <li><a href="#logros">Logros</a></li>
-                    <li><a href="#proyectos">Proyectos</a></li>
-                    <li><a href="#hobbies">Hobbies</a></li>
-                    <li><a href="#galeria">Galería</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#inicio" class="active" data-en="Home" data-es="Inicio">Inicio</a></li>
+                    <li><a href="#about" data-en="About" data-es="Estudio">Estudio</a></li>
+                    <li><a href="#skills" data-en="Skills" data-es="Habilidades">Habilidades</a></li>
+                    <li><a href="#work" data-en="Work" data-es="Proyectos">Proyectos</a></li>
+                    <li><a href="#more" data-en="More" data-es="Más">Más</a></li>
+                    <li><a href="#contact" data-en="Contact" data-es="Contacto">Contacto</a></li>
                 </ul>
-                <button class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-moon"></i>
-                </button>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Hola, soy <span>Daniela Uscanga</span></h1>
-                <p>Estudiante de Ingeniería en Sistemas construyendo habilidades en desarrollo web, con curiosidad por
-                    la IA y el diseño digital</p>
-                <div class="hero-btns">
-                    <a href="#proyectos" class="btn">Ver Mis Proyectos</a>
-                    <a href="#contacto" class="btn btn-outline">Contactar</a>
-                </div>
-            </div>
-        </div>
-        <div class="floating-elements">
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="sobre-mi" class="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>Sobre Mí</h2>
-                <p>Conoce más sobre mis intereses, objetivos y pasiones</p>
-            </div>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="./img/Perfil.jpeg" alt="Foto de perfil">
-                </div>
-                <div class="about-text">
-                    <h3>Estudiante de Ingeniería en Sistemas Computacionales</h3>
-                    <p>Como estudiante de Ingeniería en Sistemas, he canalizado mi interés por la tecnología
-                        hacia el desarrollo web práctico. A lo largo de mi formación, he construido diversas
-                        plataformas y aplicaciones web que me han permitido aplicar conceptos teóricos
-                        en proyectos tangibles.</p>
-                    <p>Mi enfoque se centra en el desarrollo full-stack, abarcando tanto la experiencia
-                        de usuario (frontend) como la lógica de servidor y bases de datos (backend).
-                        Cada proyecto representa una oportunidad para refinar mis habilidades y explorar
-                        nuevas aproximaciones técnicas.</p>
-                    <p>Creo firmemente en el aprendizaje basado en proyectos y en mantenerme actualizado
-                        con las últimas tendencias del desarrollo web, siempre buscando equilibrar innovación
-                        con fundamentos sólidos de ingeniería.</p>
-
-                    <div class="about-details">
-                        <div class="detail-item">
-                            <h4><i class="fas fa-graduation-cap"></i> Educación</h4>
-                            <p>Actualmente en Ingeniería en Sistemas</p>
+    <main>
+        <!-- INICIO -->
+        <section id="inicio" class="section active-section">
+            <div class="container">
+                <div class="hero">
+                    <div class="hero-grid">
+                        <div class="hero-content">
+                            <div class="hero-badge">✦ MYSTIC TECH STUDIO ✦</div>
+                            <h1>Daniela <span class="gradient-text">Uscanga</span></h1>
+                            <p class="hero-description" data-en="Systems Engineering student crafting digital experiences where code meets art, with a deep curiosity for AI and creative expression." data-es="Estudiante de Ingeniería en Sistemas creando experiencias digitales donde el código se encuentra con el arte, con profunda curiosidad por la IA y la expresión creativa.">Estudiante de Ingeniería en Sistemas creando experiencias digitales donde el código se encuentra con el arte, con profunda curiosidad por la IA y la expresión creativa.</p>
+                            <div class="hero-btns">
+                                <a href="#work" class="btn btn-primary"><i class="fas fa-arrow-down"></i> <span data-en="View Work" data-es="Ver Trabajo">Ver Trabajo</span></a>
+                                <a href="#contact" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> <span data-en="Contact" data-es="Contactar">Contactar</span></a>
+                            </div>
                         </div>
-                        <div class="detail-item">
-                            <h4><i class="fas fa-map-marker-alt"></i> Ubicación</h4>
-                            <p>Nuevo Casas Grandes, Chihuahua</p>
-                        </div>
-                        <div class="detail-item">
-                            <h4><i class="fas fa-language"></i> Idiomas</h4>
-                            <p>Español (Nativo), Inglés (Básico)</p>
-                        </div>
-                        <div class="detail-item">
-                            <h4><i class="fas fa-briefcase"></i> Disponibilidad</h4>
-                            <p>Prácticas / Medio tiempo</p>
+                        <div class="hero-image">
+                            <div class="hero-image-wrapper">
+                                <img src="./img/Perfil.jpeg" alt="Daniela Uscanga">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Skills Section -->
-    <section id="habilidades" class="skills">
-        <div class="container">
-            <div class="section-title">
-                <h2>Mis Habilidades Técnicas</h2>
-                <p>Tecnologías y lenguajes de programación que manejo</p>
-            </div>
-            <div class="skills-content">
-                <div class="skills-category">
-                    <h3><i class="fas fa-code"></i> Frontend</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>HTML/CSS</span>                           
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>JavaScript</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>React</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Bootstrap</span>
-                        </div>
-                    </div>
+        <!-- ABOUT - ESTUDIO -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">✦ STUDIO ✦</span>
+                    <h2 data-en="Digital alchemist" data-es="Alquimista digital">Alquimista digital</h2>
+                    <p data-en="Where code becomes art, and art becomes experience" data-es="Donde el código se vuelve arte, y el arte se vuelve experiencia">Donde el código se vuelve arte, y el arte se vuelve experiencia</p>
                 </div>
-
-                <div class="skills-category">
-                    <h3><i class="fas fa-server"></i> Backend</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>PHP</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Laravel</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>MySQL / MariaDB</span>
+                <div class="grid-4">
+                    <div class="card-mystic"><div class="card-icon"><i class="fas fa-graduation-cap"></i></div><h3 data-en="Education" data-es="Educación">Educación</h3><p data-en="Systems Engineering" data-es="Ingeniería en Sistemas">Ingeniería en Sistemas</p></div>
+                    <div class="card-mystic"><div class="card-icon"><i class="fas fa-map-marker-alt"></i></div><h3 data-en="Location" data-es="Ubicación">Ubicación</h3><p>Nuevo Casas Grandes, Chih.</p></div>
+                    <div class="card-mystic"><div class="card-icon"><i class="fas fa-language"></i></div><h3 data-en="Languages" data-es="Idiomas">Idiomas</h3><p>Español (Nativo), Inglés (Básico)</p></div>
+                    <div class="card-mystic"><div class="card-icon"><i class="fas fa-briefcase"></i></div><h3 data-en="Availability" data-es="Disponibilidad">Disponibilidad</h3><p data-en="Internship / Part time" data-es="Prácticas / Medio tiempo">Prácticas / Medio tiempo</p></div>
+                </div>
+                <div class="timeline-section">
+                    <div class="timeline-modern">
+                        <div class="timeline-item">
+                            <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 2022 — Presente</div>
+                            <p data-en="As a Systems Engineering student, I've transformed my passion for technology into practical web development. I've built various platforms and applications, applying theory to real projects. My focus is full-stack development, balancing user experience with robust backend logic. I believe in project-based learning and staying current with emerging trends, always with a creative and artistic touch." data-es="Como estudiante de Ingeniería en Sistemas, he transformado mi pasión por la tecnología en desarrollo web práctico. He construido diversas plataformas y aplicaciones, aplicando la teoría a proyectos reales. Mi enfoque es el desarrollo full-stack, equilibrando la experiencia de usuario con una lógica backend robusta. Creo en el aprendizaje basado en proyectos y en mantenerme actualizado con las tendencias emergentes, siempre con un toque creativo y artístico.">Como estudiante de Ingeniería en Sistemas, he transformado mi pasión por la tecnología en desarrollo web práctico. He construido diversas plataformas y aplicaciones, aplicando la teoría a proyectos reales. Mi enfoque es el desarrollo full-stack, equilibrando la experiencia de usuario con una lógica backend robusta. Creo en el aprendizaje basado en proyectos y en mantenerme actualizado con las tendencias emergentes, siempre con un toque creativo y artístico.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Tools Section -->
-    <section id="herramientas" class="tools">
-        <div class="container">
-            <div class="section-title">
-                <h2>Herramientas que Utilizo</h2>
-                <p>Software y aplicaciones que manejo en mis proyectos</p>
-            </div>
-            <div class="tools-grid">
-
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon">
-                            <i class="fas fa-microchip"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>Arduino IDE</h3>
-                        </div>
+        <!-- SKILLS - HABILIDADES -->
+        <section id="skills" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">✦ ARSENAL ✦</span>
+                    <h2 data-en="Creative tech stack" data-es="Stack creativo">Stack creativo</h2>
+                    <p data-en="Tools and technologies I master" data-es="Herramientas y tecnologías que domino">Herramientas y tecnologías que domino</p>
+                </div>
+                
+                <div class="skills-wrapper">
+                    <div class="skill-card"><h3><i class="fas fa-code"></i> Frontend</h3>
+                        <div class="skill-item"><span>HTML/CSS</span><div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div></div>
+                        <div class="skill-item"><span>JavaScript</span><div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div></div>
+                        <div class="skill-item"><span>React</span><div class="skill-bar"><div class="skill-progress" style="width: 60%"></div></div></div>
+                        <div class="skill-item"><span>Bootstrap</span><div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div></div>
                     </div>
-                    <p class="tool-description">Desarrollo de proyectos de electrónica y programación de
-                        microcontroladores</p>
+                    <div class="skill-card"><h3><i class="fas fa-server"></i> Backend</h3>
+                        <div class="skill-item"><span>PHP</span><div class="skill-bar"><div class="skill-progress" style="width: 65%"></div></div></div>
+                        <div class="skill-item"><span>Laravel</span><div class="skill-bar"><div class="skill-progress" style="width: 55%"></div></div></div>
+                        <div class="skill-item"><span>MySQL / MariaDB</span><div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div></div>
+                    </div>
                 </div>
 
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon">
-                            <i class="fas fa-terminal"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>Terminal/CLI</h3>
-                        </div>
-                    </div>
-                    <p class="tool-description">Comandos Linux, gestión de archivos, Git por línea de comandos y scripts
-                        básicos</p>
+                <h3 style="margin: 40px 0 20px; font-size: 1.2rem;"><i class="fas fa-tools"></i> <span data-en="Tools" data-es="Herramientas">Herramientas</span></h3>
+                <div class="tools-grid">
+                    <div class="tool-card"><i class="fas fa-microchip"></i><div><h4>Arduino IDE</h4><p>Electrónica</p></div></div>
+                    <div class="tool-card"><i class="fas fa-terminal"></i><div><h4>Terminal/CLI</h4><p>Linux, Git</p></div></div>
+                    <div class="tool-card"><i class="fas fa-code"></i><div><h4>VS Code</h4><p>Editor principal</p></div></div>
+                    <div class="tool-card"><i class="fab fa-figma"></i><div><h4>Figma</h4><p>UI/UX Design</p></div></div>
+                    <div class="tool-card"><i class="fas fa-paint-brush"></i><div><h4>Illustrator</h4><p>Vectorización</p></div></div>
+                    <div class="tool-card"><i class="fas fa-cube"></i><div><h4>Blender</h4><p>Modelado 3D</p></div></div>
+                    <div class="tool-card"><i class="fab fa-git-alt"></i><div><h4>GitHub</h4><p>Control versiones</p></div></div>
+                    <div class="tool-card"><i class="fas fa-file-excel"></i><div><h4>MS Office</h4><p>Documentación</p></div></div>
+                    <div class="tool-card"><i class="fas fa-palette"></i><div><h4>Canva</h4><p>Diseño gráfico</p></div></div>
+                    <div class="tool-card"><i class="fas fa-video"></i><div><h4>Adobe Animate</h4><p>Animación 2D</p></div></div>
+                    <div class="tool-card"><i class="fas fa-paintbrush-pencil"></i><div><h4>MediBang/Krita</h4><p>Ilustración digital</p></div></div>
+                    <div class="tool-card"><i class="fas fa-pen-fancy"></i><div><h4>Clip Studio Paint</h4><p>Arte digital</p></div></div>
+                    <div class="tool-card"><i class="fas fa-scissors"></i><div><h4>CapCut/Filmora</h4><p>Edición de video</p></div></div>
+                    <div class="tool-card"><i class="fas fa-mobile-alt"></i><div><h4>Android Studio</h4><p>Desarrollo móvil</p></div></div>
                 </div>
 
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>Visual Studio Code</h3>
-                        </div>
-                    </div>
-                    <p class="tool-description">Editor de código principal para desarrollo web y programación</p>
+                <h3 style="margin: 40px 0 20px; font-size: 1.2rem;"><i class="fas fa-heart"></i> <span data-en="Personal Skills" data-es="Habilidades Personales">Habilidades Personales</span></h3>
+                <div class="soft-grid">
+                    <div class="soft-card"><i class="fas fa-user-check"></i><h4>Responsable</h4><p>Cumplimiento de plazos</p></div>
+                    <div class="soft-card"><i class="fas fa-brain"></i><h4>Aprendizaje Rápido</h4><p>Adaptación constante</p></div>
+                    <div class="soft-card"><i class="fas fa-eye"></i><h4>Aprendizaje Visual</h4><p>Comprensión visual</p></div>
+                    <div class="soft-card"><i class="fas fa-users"></i><h4>Trabajo en Equipo</h4><p>Colaboración</p></div>
+                    <div class="soft-card"><i class="fas fa-user"></i><h4>Trabajo Individual</h4><p>Autonomía</p></div>
+                    <div class="soft-card"><i class="fas fa-shield-alt"></i><h4>Reservado</h4><p>Enfoque y claridad</p></div>
                 </div>
 
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon">
-                            <i class="fab fa-figma"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>Figma</h3>
-                        </div>
-                    </div>
-                    <p class="tool-description">Diseño de interfaces, prototipado y colaboración en diseño</p>
-                </div>
-
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>Adobe Illustrator</h3>
-                        </div>
-                    </div>
-                    <p class="tool-description">Diseño vectorial, ilustración digital y creación de gráficos</p>
-                </div>
-
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon">
-                            <i class="fas fa-cube"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>Blender</h3>
-                        </div>
-                    </div>
-                    <p class="tool-description">Modelado 3D básico, en proceso de aprendizaje</p>
-                </div>
-
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon">
-                            <i class="fab fa-git-alt"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>GitHub</h3>
-                        </div>
-                    </div>
-                    <p class="tool-description">Control de versiones, colaboración y despliegue de proyectos</p>
-                </div>
-
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon">
-                            <i class="fas fa-file-excel"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>Microsoft Office</h3>
-                        </div>
-                    </div>
-                    <p class="tool-description">Word, Excel, PowerPoint - Uso avanzado para documentación</p>
-                </div>
-
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>Canva</h3>
-                        </div>
-                    </div>
-                    <p class="tool-description">Diseño gráfico, presentaciones y contenido visual</p>
+                <h3 style="margin: 40px 0 20px; font-size: 1.2rem;"><i class="fas fa-certificate"></i> <span data-en="Certificates" data-es="Certificados">Certificados</span></h3>
+                <div class="certs-grid">
+                    <div class="cert-card"><i class="fas fa-certificate"></i><h4>CCNA: Introducción a las redes</h4><p>Cisco · 28 abril 2025</p></div>
+                    <div class="cert-card"><i class="fab fa-linux"></i><h4>Linux Unhatched</h4><p>Cisco · 28 abril 2025</p></div>
+                    <div class="cert-card"><i class="fas fa-microchip"></i><h4>Fundamentos de IA</h4><p>IBM SkillsBuild / Cisco · 06 marzo 2026</p></div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Personal Skills Section -->
-    <section id="habilidades-personales" class="personal-skills">
-        <div class="container">
-            <div class="section-title">
-                <h2>Habilidades Personales</h2>
-                <p>Características que definen mi forma de trabajar</p>
-            </div>
-            <div class="personal-skills-grid">
-                <div class="personal-skill-card">
-                    <div class="personal-skill-icon">
-                        <i class="fas fa-user-check"></i>
-                    </div>
-                    <h3>Responsable</h3>
-                    <p>Cumplimiento de plazos y compromiso con la calidad del trabajo</p>
+        <!-- WORK - PROYECTOS CON ESTADOS -->
+        <section id="work" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">✦ CREATIONS ✦</span>
+                    <h2 data-en="Featured projects" data-es="Proyectos destacados">Proyectos destacados</h2>
+                    <p data-en="Code, design and creativity" data-es="Código, diseño y creatividad">Código, diseño y creatividad</p>
                 </div>
-                <div class="personal-skill-card">
-                    <div class="personal-skill-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Aprendizaje Rápido</h3>
-                    <p>Capacidad para adaptarme y aprender nuevas tecnologías rápidamente</p>
-                </div>
-                <div class="personal-skill-card">
-                    <div class="personal-skill-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <h3>Aprendizaje Visual</h3>
-                    <p>Mejor comprensión a través de ejemplos visuales y práctica</p>
-                </div>
-                <div class="personal-skill-card">
-                    <div class="personal-skill-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Trabajo en Equipo</h3>
-                    <p>Colaboración efectiva en proyectos grupales</p>
-                </div>
-                <div class="personal-skill-card">
-                    <div class="personal-skill-icon">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <h3>Trabajo Individual</h3>
-                    <p>Autonomía y capacidad para trabajar de manera independiente</p>
-                </div>
-                <div class="personal-skill-card">
-                    <div class="personal-skill-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Reservado</h3>
-                    <p>Enfoque en el trabajo, comunicación cuando es necesaria</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="educacion" class="education">
-        <div class="container">
-            <div class="section-title">
-                <h2>Mi Educación</h2>
-                <p>Mi trayectoria académica y formaciones</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 2022 - Presente</div>
-                        <h3>Ingeniería en Sistemas Computacionales</h3>
-                        <p>Universidad [Instituto Tecnolólogico Superior de Nuevo Casas Grandes]</p>
-                        <p>Cursando actualmente con especial interés en desarrollo web, bases de datos
-                            e inteligencia artificial.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-
-                </div>
-                <div class="timeline-item">
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Academic Achievements Section -->
-    <section id="logros" class="achievements">
-        <div class="container">
-            <div class="section-title">
-                <h2>Logros Académicos</h2>
-                <p>Certificaciones obtenidas</p>
-            </div>
-            <div class="achievements-grid">
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3>Certificaciones Cisco</h3>
-                    <p>CCNA: Introducción a las redes</p>
-                    <p>Fecha de emisión: 28 abr 2025</p>
-                </div>
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3>Certificaciones Cisco</h3>
-                    <p>Linux Unhatched</p>
-                    <p>Fecha de emisión: 28 abr 2025</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="proyectos" class="projects">
-        <div class="container">
-            <div class="section-title">
-                <h2>Mis Proyectos</h2>
-                <p>Algunos de los trabajos que he desarrollado</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="./img/RadioClick.png" alt="Proyecto 1">
-                    </div>
-                    <div class="project-content">
-                        <h3>RadioClick - Prototipo de Plataforma de Podcast</h3>
-                        <p>Estado: En desarrollo | Año: 2024</p>
-                        <p>Sitio web para descubrir y escuchar podcast. Proyecto inicial de aprendizaje que me permitió
-                            consolidar fundamentos de desarrollo web front-end.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">HTML</span>
-                            <span class="project-tag">CSS</span>
-                        </div>
-                        <a href="https://github.com/DannyUR/RadioClick" class="btn">Ver en GitHub</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="./img/Velamar.png" alt="Proyecto 2">
-                    </div>
-                    <div class="project-content">
-                        <h3>Velamar</h3>
-                        <p>Estado: Completo | Año: 2025 </p>
-                        <p>Plataforma web para la administración y visualización de departamentos en Residencias
-                            Velamar.
-                            Proyecto desarrollado en colaboración, permitiendo al administrador gestionar datos mediante
-                            un panel
-                            administrativo
-                            y al cliente consultar información mediante una interfaz intuitiva.
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">PHP</span>
-                            <span class="project-tag">Booststrap</span>
-                            <span class="project-tag">JavaScript</span>
-                            <span class="project-tag">CSS</span>
-                            <span class="project-tag">HTML</span>
-                            <span class="project-tag">MariaDB</span>
-                        </div>
-                        <a href="https://github.com/MagdielD901/velamar" class="btn">Ver en GitHub</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="./img/ArtMood.png" alt="Proyecto 3">
-                    </div>
-                    <div class="project-content">
-                        <h3>ArtMood</h3>
-                        <p>Estado: En desarrollo | Año: 2025 </p>
-                        <p>Aplicación web interactiva donde artistas pueden compartir ilustraciones, fotografías y obras
-                            digitales asociadas a emociones específicas. Fomenta la expresión creativa y conexión entre
-                            creadores mediante comentarios y reacciones visuales.</p>
-                        <p>Proyecto desarrollado en colaboración.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">React</span>
-                            <span class="project-tag">CSS</span>
-                            <span class="project-tag">MySQL</span>
-                            <span class="project-tag">JavaScript</span>
-                            <span class="project-tag">PHP</span>
-                            <span class="project-tag">Laravel</span>
-                        </div>
-                        <a href="https://github.com/DannyUR/ArtMood" class="btn">Ver en GitHub</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Hobbies Section -->
-    <section id="hobbies" class="hobbies">
-        <div class="container">
-            <div class="section-title">
-                <h2>Mis Hobbies</h2>
-                <p>Actividades que disfruto en mi tiempo libre</p>
-            </div>
-            <div class="hobbies-grid">
-                <div class="hobby-card">
-                    <div class="hobby-icon">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <h3>Dibujo</h3>
-                    <p>Me encanta expresar mi creatividad a través del dibujo tradicional y digital.</p>
-                </div>
-                <div class="hobby-card">
-                    <div class="hobby-icon">
-                        <i class="fas fa-futbol"></i>
-                    </div>
-                    <h3>Fútbol</h3>
-                    <p>Disfruto jugar fútbol y trabajar en equipo para alcanzar objetivos comunes.</p>
-                </div>
-                <div class="hobby-card">
-                    <div class="hobby-icon">
-                        <i class="fas fa-gamepad"></i>
-                    </div>
-                    <h3>Videojuegos</h3>
-                    <p>Apasionado por los videojuegos, especialmente los de estrategia y rol.</p>
-                </div>
-                <div class="hobby-card">
-                    <div class="hobby-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>IA y Tecnología</h3>
-                    <p>Me interesa explorar herramientas de IA para mejorar mi aprendizaje y proyectos.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="galeria" class="gallery">
-        <div class="container">
-            <div class="section-title">
-                <h2>Galería</h2>
-                <p>Algunos de mis trabajos y momentos destacados</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="./img/MacetaInteligente.png" alt="Proyecto 1">
-                    <div class="gallery-overlay">
-                        <h3>Maceta Inteligente</h3>
-                        <p>Prototipo de maceta inteligente con Arduino</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="./img/AdobeIllustrator.png" alt="Proyecto 2">
-                    <div class="gallery-overlay">
-                        <h3>Adobe Illustrator</h3>
-                        <p>Vectoriza tu Personaje Favorito en Adobe Illustrator</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="./img/Plataforma.png" alt="Proyecto 3">
-                    <div class="gallery-overlay">
-                        <h3>Clickteam Fusion 2.5 developer</h3>
-                        <p>Crear un Juego de Plataforma con Fusion 2.5</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contacto" class="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contacto</h2>
-                <p>¿Tienes alguna pregunta o propuesta? ¡Hablemos!</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Ubicación</h3>
-                            <p>Nuevo Casas Grandes, Chihuahua</p>
+                <div class="projects-grid">
+                    <!-- ArtMood - En desarrollo -->
+                    <div class="project-card">
+                        <div class="project-img"><img src="./img/ArtMood.png" alt="ArtMood"></div>
+                        <div class="project-info">
+                            <h3>ArtMood</h3>
+                            <div class="project-status status-dev"><i class="fas fa-code-branch"></i> En desarrollo · 2025</div>
+                            <p>Aplicación web interactiva donde artistas pueden compartir ilustraciones, fotografías y obras digitales asociadas a emociones específicas. Fomenta la expresión creativa y conexión entre creadores mediante comentarios y reacciones visuales. Proyecto desarrollado en colaboración.</p>
+                            <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Laravel</span><span class="project-tag">MySQL</span><span class="project-tag">PHP</span></div>
+                            <a href="https://github.com/DannyUR/ArtMood" class="project-link"><i class="fab fa-github"></i> GitHub →</a>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <p>uscangadaniela9@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Teléfono</h3>
-                            <p>+52 636 109 9492</p>
+                    <!-- Velamar - Completado -->
+                    <div class="project-card">
+                        <div class="project-img"><img src="./img/Velamar.png" alt="Velamar"></div>
+                        <div class="project-info">
+                            <h3>Velamar</h3>
+                            <div class="project-status status-completed"><i class="fas fa-check-circle"></i> Completado · 2025</div>
+                            <p>Plataforma web para la administración y visualización de departamentos en Residencias Velamar. Proyecto desarrollado en colaboración, permitiendo al administrador gestionar datos mediante un panel administrativo y al cliente consultar información mediante una interfaz intuitiva.</p>
+                            <div class="project-tags"><span class="project-tag">PHP</span><span class="project-tag">Bootstrap</span><span class="project-tag">JavaScript</span><span class="project-tag">MariaDB</span></div>
+                            <a href="https://github.com/MagdielD901/velamar" class="project-link"><i class="fab fa-github"></i> GitHub →</a>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>GitHub</h3>
-                            <p>github.com/DannyUR</p>
+                    <!-- RadioClick - En desarrollo -->
+                    <div class="project-card">
+                        <div class="project-img"><img src="./img/RadioClick.png" alt="RadioClick"></div>
+                        <div class="project-info">
+                            <h3>RadioClick</h3>
+                            <div class="project-status status-dev"><i class="fas fa-code-branch"></i> En desarrollo · 2024</div>
+                            <p>Sitio web para descubrir y escuchar podcast. Proyecto inicial de aprendizaje que me permitió consolidar fundamentos de desarrollo web front-end. Prototipo de plataforma de podcasts con diseño responsivo y reproducción de audio.</p>
+                            <div class="project-tags"><span class="project-tag">HTML</span><span class="project-tag">CSS</span><span class="project-tag">JavaScript</span></div>
+                            <a href="https://github.com/DannyUR/RadioClick" class="project-link"><i class="fab fa-github"></i> GitHub →</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer - Nuevo Diseño -->
-    <footer>
-        <div class="container">
-            <div class="footer-cta">
-                <h3>¿Listo para trabajar juntos?</h3>
-                <p>Estoy siempre abierto a nuevas oportunidades y proyectos interesantes</p>
-                <a href="#contacto" class="btn">Contáctame</a>
+        <!-- MORE - HOBBIES + GALERÍA -->
+        <section id="more" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">✦ INSPIRATION ✦</span>
+                    <h2 data-en="Creative playground" data-es="Laboratorio creativo">Laboratorio creativo</h2>
+                    <p data-en="What inspires me outside the screen" data-es="Lo que me inspira fuera de la pantalla">Lo que me inspira fuera de la pantalla</p>
+                </div>
+                <div class="hobbies-grid">
+                    <div class="hobby-card"><i class="fas fa-paint-brush"></i><h4>Dibujo</h4><p>Arte tradicional y digital</p></div>
+                    <div class="hobby-card"><i class="fas fa-futbol"></i><h4>Fútbol</h4><p>Trabajo en equipo</p></div>
+                    <div class="hobby-card"><i class="fas fa-gamepad"></i><h4>Videojuegos</h4><p>Estrategia y rol</p></div>
+                    <div class="hobby-card"><i class="fas fa-robot"></i><h4>IA y Tecnología</h4><p>Explorando el futuro</p></div>
+                    <div class="hobby-card"><i class="fas fa-scissors"></i><h4>Manualidades</h4><p>Creación y arte manual</p></div>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="./img/MacetaInteligente.png" alt="Maceta"><div class="gallery-overlay"><h4>Maceta Inteligente</h4><p>Arduino</p></div></div>
+                    <div class="gallery-item"><img src="./img/AdobeIllustrator.png" alt="Illustrator"><div class="gallery-overlay"><h4>Adobe Illustrator</h4><p>Vectorización</p></div></div>
+                    <div class="gallery-item"><img src="./img/Plataforma.png" alt="Plataforma"><div class="gallery-overlay"><h4>Clickteam Fusion</h4><p>Game dev</p></div></div>
+                </div>
             </div>
+        </section>
 
-            <div class="footer-content">
-                <div class="footer-column footer-about">
-                    <h3>Mi Portafolio</h3>
-                    <p>Como estudiante de Ingeniería en Sistemas, he encontrado mi pasión en el desarrollo web,
-                        donde combino creatividad y lógica para construir experiencias digitales.
-                        Mientras perfecciono mis habilidades full-stack, mantengo una curiosidad activa
-                        por la inteligencia artificial, viéndola como el próximo horizonte en mi crecimiento
-                        profesional.
-
-                        Mi enfoque es práctico: transformar problemas en soluciones web eficientes,
-                        siempre con la mente abierta a aprender tecnologías emergentes.</p>
-                    <div class="social-links">
-                        <a href="https://github.com/DannyUR" class="social-link"><i class="fab fa-github"></i></a>
+        <!-- CONTACT - simplificado -->
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">✦ CONNECT ✦</span>
+                    <h2 data-en="Let's create magic" data-es="Creemos magia">Creemos magia</h2>
+                    <p data-en="Have a project? Let's talk" data-es="¿Tienes un proyecto? Hablemos">¿Tienes un proyecto? Hablemos</p>
+                </div>
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <div class="contact-card"><i class="fas fa-map-marker-alt"></i><div><h4 data-en="Location" data-es="Ubicación">Ubicación</h4><p>Nuevo Casas Grandes, Chih.</p></div></div>
+                        <div class="contact-card"><i class="fas fa-envelope"></i><div><h4>Email</h4><p>uscangadaniela9@gmail.com</p></div></div>
+                        <div class="contact-card"><i class="fas fa-phone"></i><div><h4>Teléfono</h4><p>+52 636 109 9492</p></div></div>
+                        <div class="contact-card"><i class="fab fa-github"></i><div><h4>GitHub</h4><p>github.com/DannyUR</p></div></div>
                     </div>
                 </div>
-
-                <div class="footer-column">
-                    <h3>Enlaces Rápidos</h3>
-                    <ul class="footer-links">
-                        <ul><a href="#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></ul>
-                        <ul><a href="#sobre-mi"><i class="fas fa-chevron-right"></i> Sobre Mí</a></ul>
-                        <ul><a href="#habilidades"><i class="fas fa-chevron-right"></i> Habilidades</a></ul>
-                        <ul><a href="#proyectos"><i class="fas fa-chevron-right"></i> Proyectos</a></ul>
-                        <ul><a href="#contacto"><i class="fas fa-chevron-right"></i> Contacto</a></ul>
-                    </ul>
-                </div>
             </div>
+        </section>
+    </main>
 
-            <div class="copyright">
-                <p>&copy; 2023 Mi Portafolio Creativo. Todos los derechos reservados. | Diseñado con ❤️ y mucho código
-                </p>
-            </div>
-        </div>
-    </footer>
+    <script>
+        // Generar estrellas
+        const starsContainer = document.getElementById('stars-container');
+        for (let i = 0; i < 80; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.width = Math.random() * 3 + 1 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 5 + 's';
+            star.style.animationDuration = 2 + Math.random() * 4 + 's';
+            starsContainer.appendChild(star);
+        }
 
-    <script src="script.js"></script>
+        // Menú móvil
+        document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+            document.querySelector('.nav-links')?.classList.toggle('active');
+        });
+
+        // Navegación por secciones
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        function showSection(id) {
+            sections.forEach(s => s.classList.remove('active-section'));
+            document.querySelector(id).classList.add('active-section');
+            navLinks.forEach(l => { l.classList.remove('active'); if (l.getAttribute('href') === id) l.classList.add('active'); });
+        }
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showSection(link.getAttribute('href'));
+                document.querySelector('.nav-links')?.classList.remove('active');
+            });
+        });
+
+        // Header scroll
+        window.addEventListener('scroll', () => {
+            document.querySelector('header')?.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Descargar CV
+        document.getElementById('downloadCV')?.addEventListener('click', () => {
+            const cv = `DANIELA USCANGA\nIngeniería en Sistemas Computacionales\nITSNCG · 2022-2026\n\nHABILIDADES TÉCNICAS:\n• HTML/CSS (85%) · JavaScript (70%) · React (60%) · Bootstrap (75%)\n• PHP (65%) · Laravel (55%) · MySQL/MariaDB (70%)\n\nHERRAMIENTAS:\nArduino, Terminal/CLI, VS Code, Figma, Illustrator, Blender, GitHub, Office, Canva, Adobe Animate, MediBang/Krita, Clip Studio Paint, CapCut/Filmora, Android Studio\n\nHABILIDADES PERSONALES:\nResponsable, Aprendizaje Rápido, Trabajo en Equipo, Autonomía\n\nPROYECTOS:\n• ArtMood - En desarrollo (React, Laravel, MySQL)\n• Velamar - Completado (PHP, Bootstrap, MariaDB)\n• RadioClick - En desarrollo (HTML, CSS, JS)\n\nCERTIFICACIONES:\n• CCNA: Introducción a las redes (Cisco, 2025)\n• Linux Unhatched (Cisco, 2025)\n• Fundamentos de IA (IBM SkillsBuild/Cisco, 2026)\n\nCONTACTO:\nEmail: uscangadaniela9@gmail.com\nGitHub: github.com/DannyUR\nTel: +52 636 109 9492`;
+            const blob = new Blob([cv], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'CV_Daniela_Uscanga.txt';
+            a.click();
+            URL.revokeObjectURL(a.href);
+        });
+
+        // Cambio de idioma
+        let currentLang = 'es';
+        function updateLanguage(lang) {
+            document.querySelectorAll('[data-en][data-es]').forEach(el => {
+                el.textContent = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
+            });
+            document.querySelectorAll('[data-en-place][data-es-place]').forEach(el => {
+                el.placeholder = lang === 'en' ? el.getAttribute('data-en-place') : el.getAttribute('data-es-place');
+            });
+            document.getElementById('langText').textContent = lang === 'en' ? 'EN' : 'ES';
+            currentLang = lang;
+        }
+        document.getElementById('languageToggle')?.addEventListener('click', () => {
+            updateLanguage(currentLang === 'es' ? 'en' : 'es');
+        });
+
+        // Animación barras
+        const bars = document.querySelectorAll('.skill-progress');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    const w = e.target.style.width;
+                    e.target.style.width = '0';
+                    setTimeout(() => { e.target.style.width = w; }, 100);
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        bars.forEach(b => observer.observe(b));
+    </script>
 </body>
 
 </html>
