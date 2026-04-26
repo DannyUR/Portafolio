@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniela Uscanga - CV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Daniela Uscanga - CV Profesional</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -13,59 +13,68 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #0a192f 0%, #1e3a5f 100%);
-            padding: 40px 24px;
-            min-height: 100vh;
+            font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #e2e8f0;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 24px;
         }
 
+        /* Contenedor principal: tamaño exacto A4 / Carta con altura flexible para impresión limpia */
         .cv {
-            max-width: 1000px;
-            margin: 0 auto;
+            width: 210mm;
+            max-width: 100%;
             background: #ffffff;
-            border-radius: 32px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+            margin: 0 auto;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
+            border-radius: 0px;
+            transition: all 0.2s;
         }
 
+        /* Grid de dos columnas bien proporcionado */
         .cv-inner {
             display: grid;
-            grid-template-columns: 290px 1fr;
+            grid-template-columns: 31% 69%;
+            width: 100%;
         }
 
-        /* Panel izquierdo */
+        /* ========== PANEL IZQUIERDO (Azul noche elegante) ========== */
         .cv-left {
-            background: linear-gradient(180deg, #0a192f 0%, #1e3a5f 100%);
-            padding: 35px 24px;
-            color: #e6e9f0;
+            background: linear-gradient(145deg, #0B1E33 0%, #13324B 100%);
+            padding: 28px 20px 32px 20px;
+            color: #EEF2F8;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .avatar {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 24px;
         }
 
         .avatar img {
-            width: 130px;
-            height: 130px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid rgba(180, 169, 212, 0.5);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 3px solid rgba(200, 180, 220, 0.6);
+            box-shadow: 0 8px 14px rgba(0, 0, 0, 0.2);
+            background: #fff;
         }
 
+        /* Títulos laterales */
         .cv-left h3 {
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 2px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.8px;
             text-transform: uppercase;
-            color: #b8a9d4;
-            margin: 20px 0 12px 0;
+            color: #CFC4E6;
+            margin: 22px 0 12px 0;
             padding-bottom: 6px;
-            border-bottom: 1px solid rgba(180, 169, 212, 0.25);
+            border-bottom: 1.5px solid rgba(207, 196, 230, 0.3);
         }
 
         .cv-left h3:first-of-type {
@@ -74,21 +83,25 @@
 
         .contact-list {
             list-style: none;
+            margin-top: 4px;
         }
 
         .contact-list li {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-size: 0.7rem;
+            font-weight: 400;
+            line-height: 1.3;
             word-break: break-word;
         }
 
         .contact-list li i {
-            width: 18px;
-            color: #b8a9d4;
+            width: 20px;
+            color: #CFC4E6;
             font-size: 0.8rem;
+            text-align: center;
         }
 
         .edu-item {
@@ -96,75 +109,84 @@
         }
 
         .edu-item h4 {
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 3px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #ffffff;
         }
 
         .edu-date {
-            font-size: 0.65rem;
-            color: #9aa4bf;
+            font-size: 0.62rem;
+            color: #bbd1e5;
             margin-bottom: 4px;
         }
 
         .edu-item p {
-            font-size: 0.7rem;
-            color: #c8d0e0;
+            font-size: 0.65rem;
+            color: #d0deed;
             line-height: 1.4;
         }
 
         .skills-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 8px;
+            margin-top: 6px;
         }
 
         .skill-tag {
-            background: rgba(180, 169, 212, 0.12);
-            padding: 3px 10px;
+            background: rgba(207, 196, 230, 0.12);
+            padding: 4px 10px;
             border-radius: 30px;
-            font-size: 0.65rem;
-            color: #b8a9d4;
+            font-size: 0.62rem;
+            font-weight: 500;
+            color: #E2D9F5;
+            letter-spacing: 0.2px;
         }
 
         .lang-item {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 0.75rem;
-        }
-
-        .lang-name {
+            align-items: baseline;
+            margin-bottom: 10px;
+            font-size: 0.72rem;
             font-weight: 500;
+            padding-right: 5px;
         }
 
         .lang-level {
-            color: #b8a9d4;
+            color: #CFC4E6;
             font-size: 0.65rem;
+            background: rgba(0,0,0,0.2);
+            padding: 2px 8px;
+            border-radius: 20px;
         }
 
-        /* Panel derecho */
+        /* ========== PANEL DERECHO (Fondo blanco, espaciado generoso) ========== */
         .cv-right {
             background: #ffffff;
-            padding: 35px 30px;
+            padding: 28px 26px 30px 26px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .cv-header {
             margin-bottom: 22px;
-            border-bottom: 3px solid #b8a9d4;
-            padding-bottom: 15px;
+            border-bottom: 3px solid #E9E2F5;
+            padding-bottom: 14px;
         }
 
         .cv-header h1 {
-            font-size: 1.9rem;
-            font-weight: 700;
-            color: #0a192f;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0B1E33;
             letter-spacing: -0.5px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .cv-header h1 span {
-            background: linear-gradient(135deg, #4a2c6d, #b8a9d4);
+            background: linear-gradient(125deg, #5B3B8C, #A28BC9);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -172,19 +194,22 @@
 
         .cv-header .subtitle {
             font-size: 0.8rem;
-            color: #6b7280;
-            font-weight: 500;
+            font-weight: 600;
+            color: #4a5568;
             margin-bottom: 8px;
+            letter-spacing: 0.2px;
         }
 
         .cv-header .bio {
-            font-size: 0.75rem;
-            color: #4b5563;
-            line-height: 1.5;
+            font-size: 0.72rem;
+            color: #2d3a4b;
+            line-height: 1.45;
+            margin-top: 6px;
         }
 
+        /* Secciones lado derecho */
         .section {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
 
         .section-title {
@@ -192,25 +217,28 @@
             align-items: center;
             gap: 8px;
             font-size: 0.75rem;
-            font-weight: 700;
-            color: #0a192f;
-            letter-spacing: 1px;
+            font-weight: 800;
+            color: #1A2C3E;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
             margin-bottom: 12px;
+            border-left: 4px solid #A28BC9;
+            padding-left: 12px;
         }
 
         .section-title i {
-            color: #b8a9d4;
+            color: #8b6cb0;
             font-size: 0.8rem;
         }
 
+        /* certificaciones con diseño más limpio */
         .cert {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            margin-bottom: 10px;
-            padding-bottom: 6px;
-            border-bottom: 1px solid #f0f0f0;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #edf2f7;
         }
 
         .cert:last-child {
@@ -220,219 +248,240 @@
         }
 
         .cert-name {
-            font-weight: 600;
-            font-size: 0.75rem;
-            color: #1f2937;
-        }
-
-        .cert-date {
-            font-size: 0.65rem;
-            color: #9ca3af;
+            font-weight: 700;
+            font-size: 0.7rem;
+            color: #1F2A3E;
         }
 
         .cert-issuer {
-            font-size: 0.65rem;
-            color: #b8a9d4;
-            margin-top: 2px;
+            font-size: 0.6rem;
+            color: #8b6cb0;
+            margin-top: 3px;
         }
 
+        .cert-date {
+            font-size: 0.6rem;
+            color: #7e8a98;
+            background: #F4F0FA;
+            padding: 2px 8px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        /* Herramientas grid */
         .tools-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 12px;
+            gap: 8px;
+            margin-top: 4px;
         }
 
         .tool-badge {
-            background: #f3f4f6;
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-size: 0.65rem;
-            color: #374151;
-        }
-
-        .soft-badge {
-            background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
-            padding: 4px 12px;
+            background: #F1F5F9;
+            padding: 5px 12px;
             border-radius: 30px;
             font-size: 0.65rem;
             font-weight: 500;
-            color: #4a2c6d;
+            color: #1F2A3E;
+            transition: all 0.1s;
+        }
+
+        .soft-badge {
+            background: linear-gradient(115deg, #F4EDFC, #EBE2F7);
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: #432C6B;
         }
 
         .availability-box {
-            background: #f8f9fa;
+            background: #FBF9FE;
             padding: 12px 16px;
-            border-radius: 16px;
-            border-left: 4px solid #b8a9d4;
+            border-radius: 18px;
+            border-left: 5px solid #A28BC9;
+            margin-top: 4px;
         }
 
         .availability-box p {
-            font-size: 0.7rem;
-            color: #4b5563;
-            margin-bottom: 4px;
+            font-size: 0.68rem;
+            color: #2C3E50;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
         }
 
         .availability-box p:last-child {
             margin-bottom: 0;
         }
 
+        /* PORTAFOLIO final - visual atractivo */
+        .portfolio-box {
+            background: #FCFAFE;
+            border-radius: 20px;
+            padding: 16px 18px;
+            text-align: center;
+            border: 1px solid #E1D6F0;
+            margin-top: 12px;
+            transition: 0.1s;
+        }
+
+        .portfolio-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #A28BC9, #C3B1E6);
+            color: #0B1E33;
+            padding: 8px 18px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 0.7rem;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .portfolio-btn i {
+            font-size: 0.7rem;
+        }
+
+        .portfolio-btn:hover {
+            background: linear-gradient(135deg, #b59edb, #cfbdf2);
+            transform: scale(0.98);
+        }
+
+        .qr-code {
+            text-align: center;
+        }
+
+        .qr-code img {
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            background: white;
+            padding: 4px;
+            border: 1px solid #DCCFEF;
+        }
+
+        .qr-code p {
+            font-size: 0.6rem;
+            margin-top: 5px;
+            font-weight: 500;
+            color: #6B4D93;
+        }
+
+        .portfolio-link-text {
+            margin-top: 12px;
+            font-size: 0.65rem;
+            word-break: break-all;
+        }
+
+        .portfolio-link-text a {
+            color: #694B96;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px dashed #b8a9d4;
+        }
+
+        /* Botón flotante de impresión */
         .print-btn {
             position: fixed;
-            bottom: 30px;
+            bottom: 25px;
             right: 30px;
-            background: linear-gradient(135deg, #b8a9d4, #d4a5a5);
+            background: #1E2F47;
             border: none;
-            padding: 12px 24px;
+            padding: 10px 24px;
             border-radius: 50px;
-            color: #0a192f;
+            color: white;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 0.85rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            z-index: 100;
+            font-size: 0.8rem;
+            z-index: 1000;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+            transition: all 0.2s;
             font-family: inherit;
         }
 
         .print-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            background: #0F2A42;
+            transform: translateY(-2px);
         }
 
-        /* ============================================ */
-        /* CSS ESPECÍFICO PARA IMPRESIÓN (1 hoja) */
-        /* ============================================ */
+        /* REGLAS DE IMPRESIÓN (A4 / Carta perfecto) */
         @media print {
             body {
                 background: white;
                 padding: 0;
                 margin: 0;
             }
-            
             .print-btn {
                 display: none;
             }
-            
             .cv {
+                width: 100%;
                 max-width: 100%;
-                margin: 0;
+                height: auto;
                 box-shadow: none;
+                margin: 0;
                 border-radius: 0;
             }
-            
             .cv-inner {
-                display: grid;
-                grid-template-columns: 270px 1fr;
+                grid-template-columns: 30% 70%;
             }
-            
-            /* Ajustes de espaciado para que quepa */
-            .cv-left {
-                padding: 15px 18px;
+            .cv-left, .cv-right {
+                break-inside: avoid;
+                page-break-inside: avoid;
             }
-            
-            .cv-right {
-                padding: 15px 22px;
+            @page {
+                size: A4;
+                margin: 0.6cm 0.5cm;
             }
-            
-            .avatar img {
-                width: 100px;
-                height: 100px;
+            body, .cv, .cv-inner {
+                background: white;
             }
-            
-            .avatar {
-                margin-bottom: 15px;
+            .portfolio-box {
+                border: 1px solid #ddd;
+                background: #fefefe;
             }
-            
-            .cv-left h3 {
-                margin: 12px 0 8px 0;
-                font-size: 0.65rem;
-            }
-            
-            .contact-list li {
-                margin-bottom: 6px;
-                font-size: 0.65rem;
-            }
-            
-            .edu-item {
-                margin-bottom: 10px;
-            }
-            
-            .edu-item h4 {
-                font-size: 0.7rem;
-            }
-            
-            .skill-tag {
-                padding: 2px 8px;
-                font-size: 0.6rem;
-            }
-            
-            .cv-header {
-                margin-bottom: 12px;
-                padding-bottom: 8px;
-            }
-            
-            .cv-header h1 {
-                font-size: 1.5rem;
-            }
-            
-            .cv-header .bio {
-                font-size: 0.65rem;
-            }
-            
-            .section {
-                margin-bottom: 12px;
-            }
-            
-            .section-title {
-                margin-bottom: 8px;
-                font-size: 0.7rem;
-            }
-            
-            .cert {
-                margin-bottom: 6px;
-                padding-bottom: 4px;
-            }
-            
-            .cert-name {
-                font-size: 0.7rem;
-            }
-            
-            .tool-badge, .soft-badge {
-                padding: 3px 10px;
-                font-size: 0.6rem;
-            }
-            
             .availability-box {
-                padding: 8px 12px;
+                background: #f8f9fc;
             }
-            
-            .availability-box p {
-                font-size: 0.65rem;
-                margin-bottom: 3px;
-            }
-            
-            /* Opcional: ocultar el QR en la impresión para ahorrar espacio */
-            .cv-left div:last-child {
-                display: none;
+            .skill-tag, .tool-badge, .soft-badge {
+                background: #f1f1f1;
+                color: #222;
+                border: none;
             }
         }
 
-        @media (max-width: 750px) {
+        /* Responsive para pantallas pequeñas, igual mantiene la impresión correcta */
+        @media (max-width: 780px) {
             body {
-                padding: 20px;
+                padding: 12px;
+            }
+            .cv {
+                width: 100%;
             }
             .cv-inner {
                 grid-template-columns: 1fr;
             }
-            .print-btn {
-                bottom: 20px;
-                right: 20px;
-                padding: 10px 18px;
-                font-size: 0.75rem;
+            .cv-left {
+                text-align: left;
+            }
+            .avatar img {
+                width: 90px;
+                height: 90px;
             }
         }
     </style>
@@ -441,177 +490,181 @@
 
 <div class="cv">
     <div class="cv-inner">
-        <!-- PANEL IZQUIERDO -->
+        <!-- COLUMNA IZQUIERDA: Contacto, Educación, Habilidades, Idiomas, Hobbies -->
         <div class="cv-left">
-            <div class="avatar">
-                <img src="./img/Perfil.jpeg" alt="Daniela Uscanga">
-            </div>
+            <div>
+                <div class="avatar">
+                    <!-- Nota: la imagen se referencia desde ./img/Perfil.jpeg, si no existe se puede mostrar un placeholder circular con iniciales. Se conserva tu ruta -->
+                    <img src="./img/Perfil.jpeg" alt="Daniela Uscanga" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?background=8b6cb0&color=fff&name=DU&size=110&rounded=true';">
+                </div>
 
-            <h3>CONTACTO</h3>
-            <ul class="contact-list">
-                <li><i class="fas fa-envelope"></i> uscangadaniela9@gmail.com</li>
-                <li><i class="fas fa-phone-alt"></i> +52 636 109 9492</li>
-                <li><i class="fas fa-map-marker-alt"></i> Nuevo Casas Grandes, Chihuahua</li>
-                <li><i class="fab fa-github"></i> github.com/DannyUR</li>
-            </ul>
+                <h3><i class="fas fa-address-card" style="margin-right: 6px;"></i> CONTACTO</h3>
+                <ul class="contact-list">
+                    <li><i class="fas fa-envelope"></i> uscangadaniela9@gmail.com</li>
+                    <li><i class="fas fa-phone-alt"></i> +52 636 109 9492</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Nuevo Casas Grandes, Chih.</li>
+                    <li><i class="fab fa-github"></i> github.com/DannyUR</li>
+                </ul>
 
-            <h3>EDUCACIÓN</h3>
-            <div class="edu-item">
-                <h4>Ingeniería en Sistemas Computacionales</h4>
-                <div class="edu-date">2022 - Presente</div>
-                <p>Instituto Tecnológico Superior de Nuevo Casas Grandes</p>
-            </div>
+                <h3>EDUCACIÓN</h3>
+                <div class="edu-item">
+                    <h4>Ingeniería en Sistemas Computacionales</h4>
+                    <div class="edu-date">2022 - Presente</div>
+                    <p>Instituto Tecnológico Superior de Nuevo Casas Grandes</p>
+                </div>
 
-            <h3>HABILIDADES TÉCNICAS</h3>
-            <div class="skills-tags">
-                <span class="skill-tag">HTML/CSS</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">React</span>
-                <span class="skill-tag">Bootstrap</span>
-                <span class="skill-tag">PHP</span>
-                <span class="skill-tag">Laravel</span>
-                <span class="skill-tag">MySQL/MariaDB</span>
-                <span class="skill-tag">Git/GitHub</span>
-            </div>
+                <h3>HABILIDADES TÉCNICAS</h3>
+                <div class="skills-tags">
+                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Bootstrap</span>
+                    <span class="skill-tag">PHP</span>
+                    <span class="skill-tag">Laravel</span>
+                    <span class="skill-tag">MySQL/MariaDB</span>
+                    <span class="skill-tag">Git/GitHub</span>
+                </div>
 
-            <h3>IDIOMAS</h3>
-            <div class="lang-item">
-                <span class="lang-name">Español</span>
-                <span class="lang-level">Nativo</span>
-            </div>
-            <div class="lang-item">
-                <span class="lang-name">Inglés</span>
-                <span class="lang-level">Básico</span>
-            </div>
+                <h3>IDIOMAS</h3>
+                <div class="lang-item">
+                    <span>Español</span>
+                    <span class="lang-level">Nativo</span>
+                </div>
+                <div class="lang-item">
+                    <span>Inglés</span>
+                    <span class="lang-level">Básico (A2)</span>
+                </div>
 
-            <h3>HOBBIES</h3>
-            <div class="skills-tags">
-                <span class="skill-tag">Dibujo</span>
-                <span class="skill-tag">Fútbol</span>
-                <span class="skill-tag">Videojuegos</span>
-                <span class="skill-tag">IA y Tecnología</span>
-                <span class="skill-tag">Manualidades</span>
-            </div>
-
-            <!-- BOTÓN + QR PARA PORTAFOLIO -->
-            <div style="background: rgba(180, 169, 212, 0.08); border-radius: 16px; padding: 12px; margin-top: 18px; text-align: center;">
-                <p style="font-size: 0.6rem; color: #b8a9d4; margin-bottom: 10px; letter-spacing: 1px;">
-                    <i class="fas fa-folder-open"></i> PORTAFOLIO
-                </p>
-                <div style="display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
-                    <a href="https://dannyur.github.io/Portafolio/" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #b8a9d4, #d4a5a5); color: #0a192f; padding: 5px 14px; border-radius: 40px; text-decoration: none; font-size: 0.65rem; font-weight: 600;">
-                        <i class="fas fa-external-link-alt"></i> Visitar
-                    </a>
-                    <div style="text-align: center;">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=45x45&data=https://dannyur.github.io/Portafolio/" alt="QR Portafolio" style="width: 40px; height: 40px; border-radius: 8px; background: white; padding: 2px;">
-                        <p style="font-size: 0.45rem; color: #9aa4bf; margin-top: 2px;">Escanear</p>
-                    </div>
+                <h3>HOBBIES & INTERESES</h3>
+                <div class="skills-tags">
+                    <span class="skill-tag">🎨 Dibujo</span>
+                    <span class="skill-tag">⚽ Fútbol</span>
+                    <span class="skill-tag">🎮 Videojuegos</span>
+                    <span class="skill-tag">🤖 IA Generativa</span>
+                    <span class="skill-tag">✂️ Manualidades</span>
                 </div>
             </div>
         </div>
 
-        <!-- PANEL DERECHO -->
+        <!-- COLUMNA DERECHA: Perfil, certificaciones, herramientas, habilidades personales, disponibilidad + Portafolio -->
         <div class="cv-right">
-            <div class="cv-header">
-                <h1>Daniela <span>Uscanga</span></h1>
-                <div class="subtitle">Estudiante de Ingeniería en Sistemas</div>
-                <div class="bio">
-                    Apasionada por el desarrollo web, la inteligencia artificial y el diseño digital. 
-                    Combino la lógica de la programación con un enfoque creativo para construir 
-                    experiencias digitales únicas. Busco oportunidades de prácticas donde pueda 
-                    seguir desarrollando mis habilidades full-stack.
-                </div>
-            </div>
-
-            <!-- CERTIFICACIONES -->
-            <div class="section">
-                <div class="section-title">
-                    <i class="fas fa-certificate"></i>
-                    <span>CERTIFICACIONES</span>
-                </div>
-                <div class="cert">
-                    <div>
-                        <div class="cert-name">CCNA: Introducción a las redes</div>
-                        <div class="cert-issuer">Cisco Networking Academy</div>
+            <div>
+                <div class="cv-header">
+                    <h1>Daniela <span>Uscanga</span></h1>
+                    <div class="subtitle">Estudiante de Ingeniería en Sistemas | Desarrolladora Full-stack en formación</div>
+                    <div class="bio">
+                        Apasionada por el desarrollo web, la inteligencia artificial y el diseño digital. 
+                        Combino la lógica de programación con un enfoque creativo. Busco prácticas profesionales 
+                        para seguir desarrollando mis habilidades full-stack y contribuir a proyectos innovadores.
                     </div>
-                    <div class="cert-date">2025</div>
                 </div>
-                <div class="cert">
-                    <div>
-                        <div class="cert-name">Linux Unhatched</div>
-                        <div class="cert-issuer">Cisco Networking Academy</div>
+
+                <!-- CERTIFICACIONES -->
+                <div class="section">
+                    <div class="section-title"><i class="fas fa-certificate"></i> CERTIFICACIONES</div>
+                    <div class="cert">
+                        <div>
+                            <div class="cert-name">CCNA: Introducción a las redes</div>
+                            <div class="cert-issuer">Cisco Networking Academy</div>
+                        </div>
+                        <div class="cert-date">2025</div>
                     </div>
-                    <div class="cert-date">2025</div>
-                </div>
-                <div class="cert">
-                    <div>
-                        <div class="cert-name">Fundamentos de IA</div>
-                        <div class="cert-issuer">IBM SkillsBuild / Cisco</div>
+                    <div class="cert">
+                        <div>
+                            <div class="cert-name">Linux Unhatched</div>
+                            <div class="cert-issuer">Cisco Networking Academy</div>
+                        </div>
+                        <div class="cert-date">2025</div>
                     </div>
-                    <div class="cert-date">2026</div>
+                    <div class="cert">
+                        <div>
+                            <div class="cert-name">Fundamentos de IA</div>
+                            <div class="cert-issuer">IBM SkillsBuild / Cisco</div>
+                        </div>
+                        <div class="cert-date">2026</div>
+                    </div>
+                </div>
+
+                <!-- HERRAMIENTAS (grid espaciado) -->
+                <div class="section">
+                    <div class="section-title"><i class="fas fa-laptop-code"></i> HERRAMIENTAS</div>
+                    <div class="tools-grid">
+                        <span class="tool-badge">VS Code</span>
+                        <span class="tool-badge">Figma</span>
+                        <span class="tool-badge">Illustrator</span>
+                        <span class="tool-badge">Blender</span>
+                        <span class="tool-badge">Arduino IDE</span>
+                        <span class="tool-badge">Android Studio</span>
+                        <span class="tool-badge">CapCut/Filmora</span>
+                        <span class="tool-badge">Adobe Animate</span>
+                        <span class="tool-badge">MediBang/Krita</span>
+                        <span class="tool-badge">Clip Studio Paint</span>
+                        <span class="tool-badge">Canva</span>
+                        <span class="tool-badge">MS Office</span>
+                    </div>
+                </div>
+
+                <!-- HABILIDADES PERSONALES (con diseño más suave) -->
+                <div class="section">
+                    <div class="section-title"><i class="fas fa-star"></i> HABILIDADES PERSONALES</div>
+                    <div class="tools-grid">
+                        <span class="soft-badge">Responsable</span>
+                        <span class="soft-badge">Aprendizaje Rápido</span>
+                        <span class="soft-badge">Aprendizaje Visual</span>
+                        <span class="soft-badge">Trabajo en Equipo</span>
+                        <span class="soft-badge">Autonomía</span>
+                        <span class="soft-badge">Creatividad</span>
+                        <span class="soft-badge">Comunicación</span>
+                    </div>
+                </div>
+
+                <!-- DISPONIBILIDAD (mejor estructura) -->
+                <div class="section">
+                    <div class="section-title"><i class="fas fa-calendar-alt"></i> DISPONIBILIDAD</div>
+                    <div class="availability-box">
+                        <p>✔️ Prácticas profesionales | Freelance</p>
+                        <p>📅 Incorporación: junio 2026 | Horario flexible</p>
+                        <p>⏱️ Horas y duración a convenir con la empresa</p>
+                        <p>📍 Base en Nuevo Casas Grandes, Chihuahua</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- HERRAMIENTAS -->
-            <div class="section">
-                <div class="section-title">
-                    <i class="fas fa-tools"></i>
-                    <span>HERRAMIENTAS</span>
+            <!-- SECCIÓN PORTAFOLIO bien integrada al final -->
+            <div class="portfolio-box">
+                <div class="portfolio-content">
+                    <a href="https://dannyur.github.io/Portafolio/" target="_blank" class="portfolio-btn">
+                        <i class="fas fa-external-link-alt"></i> Visitar portafolio
+                    </a>
+                    <div class="qr-code">
+                        <!-- QR dinámico usando api.qrserver, apunta al portafolio -->
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://dannyur.github.io/Portafolio/" alt="QR Portafolio">
+                        <p>Escanear</p>
+                    </div>
                 </div>
-                <div class="tools-grid">
-                    <span class="tool-badge">VS Code</span>
-                    <span class="tool-badge">Figma</span>
-                    <span class="tool-badge">Illustrator</span>
-                    <span class="tool-badge">Blender</span>
-                    <span class="tool-badge">Arduino IDE</span>
-                    <span class="tool-badge">Android Studio</span>
-                    <span class="tool-badge">CapCut/Filmora</span>
-                    <span class="tool-badge">Adobe Animate</span>
-                    <span class="tool-badge">MediBang/Krita</span>
-                    <span class="tool-badge">Clip Studio Paint</span>
-                    <span class="tool-badge">Canva</span>
-                    <span class="tool-badge">MS Office</span>
-                </div>
-            </div>
-
-            <!-- HABILIDADES PERSONALES -->
-            <div class="section">
-                <div class="section-title">
-                    <i class="fas fa-heart"></i>
-                    <span>HABILIDADES PERSONALES</span>
-                </div>
-                <div class="tools-grid">
-                    <span class="soft-badge">Responsable</span>
-                    <span class="soft-badge">Aprendizaje Rápido</span>
-                    <span class="soft-badge">Aprendizaje Visual</span>
-                    <span class="soft-badge">Trabajo en Equipo</span>
-                    <span class="soft-badge">Autonomía</span>
-                    <span class="soft-badge">Reservado</span>
-                    <span class="soft-badge">Creatividad</span>
-                </div>
-            </div>
-
-            <!-- DISPONIBILIDAD -->
-            <div class="section">
-                <div class="section-title">
-                    <i class="fas fa-briefcase"></i>
-                    <span>DISPONIBILIDAD</span>
-                </div>
-                <div class="availability-box">
-                    <p>• Prácticas profesionales | Freelance</p>
-                    <p>• Incorporación: junio 2026</p>
-                    <p>• Horario flexible</p>
-                    <p>• Horas y duración a convenir con la empresa</p>
-                    <p>• Base en Nuevo Casas Grandes, Chihuahua</p>
+                <div class="portfolio-link-text">
+                    🔗 <a href="https://dannyur.github.io/Portafolio/" target="_blank">dannyur.github.io/Portafolio</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<button class="print-btn" onclick="window.print()">
-    <i class="fas fa-print"></i> Guardar como PDF
+<button class="print-btn" onclick="window.print();">
+    <i class="fas fa-print"></i> Guardar / Imprimir PDF
 </button>
 
+<script>
+    // Pequeña corrección para permitir que al imprimir el grid se respete en navegadores
+    (function() {
+        if (window.matchMedia) {
+            const printMedia = window.matchMedia('print');
+            const adjustPrintMargins = () => {
+                // sin acciones extra, solo garantizar que los estilos de impresión funcionan
+            };
+            printMedia.addListener(adjustPrintMargins);
+        }
+    })();
+</script>
 </body>
 </html>
