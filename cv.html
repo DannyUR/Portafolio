@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
@@ -157,7 +158,7 @@
         .lang-level {
             color: #CFC4E6;
             font-size: 0.65rem;
-            background: rgba(0,0,0,0.2);
+            background: rgba(0, 0, 0, 0.2);
             padding: 2px 8px;
             border-radius: 20px;
         }
@@ -347,7 +348,7 @@
             font-size: 0.7rem;
             font-weight: 700;
             transition: all 0.2s ease;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
         }
 
         .portfolio-btn i {
@@ -409,7 +410,7 @@
             gap: 10px;
             font-size: 0.8rem;
             z-index: 1000;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
             transition: all 0.2s;
             font-family: inherit;
         }
@@ -426,9 +427,11 @@
                 padding: 0;
                 margin: 0;
             }
+
             .print-btn {
                 display: none;
             }
+
             .cv {
                 width: 100%;
                 max-width: 100%;
@@ -437,28 +440,40 @@
                 margin: 0;
                 border-radius: 0;
             }
+
             .cv-inner {
                 grid-template-columns: 30% 70%;
             }
-            .cv-left, .cv-right {
+
+            .cv-left,
+            .cv-right {
                 break-inside: avoid;
                 page-break-inside: avoid;
             }
+
             @page {
                 size: A4;
                 margin: 0.6cm 0.5cm;
             }
-            body, .cv, .cv-inner {
+
+            body,
+            .cv,
+            .cv-inner {
                 background: white;
             }
+
             .portfolio-box {
                 border: 1px solid #ddd;
                 background: #fefefe;
             }
+
             .availability-box {
                 background: #f8f9fc;
             }
-            .skill-tag, .tool-badge, .soft-badge {
+
+            .skill-tag,
+            .tool-badge,
+            .soft-badge {
                 background: #f1f1f1;
                 color: #222;
                 border: none;
@@ -470,15 +485,19 @@
             body {
                 padding: 12px;
             }
+
             .cv {
                 width: 100%;
             }
+
             .cv-inner {
                 grid-template-columns: 1fr;
             }
+
             .cv-left {
                 text-align: left;
             }
+
             .avatar img {
                 width: 90px;
                 height: 90px;
@@ -486,185 +505,192 @@
         }
     </style>
 </head>
+
 <body>
 
-<div class="cv">
-    <div class="cv-inner">
-        <!-- COLUMNA IZQUIERDA: Contacto, Educación, Habilidades, Idiomas, Hobbies -->
-        <div class="cv-left">
-            <div>
-                <div class="avatar">
-                    <!-- Nota: la imagen se referencia desde ./img/Perfil.jpeg, si no existe se puede mostrar un placeholder circular con iniciales. Se conserva tu ruta -->
-                    <img src="./img/Perfil.jpeg" alt="Daniela Uscanga" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?background=8b6cb0&color=fff&name=DU&size=110&rounded=true';">
-                </div>
-
-                <h3><i class="fas fa-address-card" style="margin-right: 6px;"></i> CONTACTO</h3>
-                <ul class="contact-list">
-                    <li><i class="fas fa-envelope"></i> uscangadaniela9@gmail.com</li>
-                    <li><i class="fas fa-phone-alt"></i> +52 636 109 9492</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Nuevo Casas Grandes, Chih.</li>
-                    <li><i class="fab fa-github"></i> github.com/DannyUR</li>
-                </ul>
-
-                <h3>EDUCACIÓN</h3>
-                <div class="edu-item">
-                    <h4>Ingeniería en Sistemas Computacionales</h4>
-                    <div class="edu-date">2022 - Presente</div>
-                    <p>Instituto Tecnológico Superior de Nuevo Casas Grandes</p>
-                </div>
-
-                <h3>HABILIDADES TÉCNICAS</h3>
-                <div class="skills-tags">
-                    <span class="skill-tag">HTML/CSS</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">React</span>
-                    <span class="skill-tag">Bootstrap</span>
-                    <span class="skill-tag">PHP</span>
-                    <span class="skill-tag">Laravel</span>
-                    <span class="skill-tag">MySQL/MariaDB</span>
-                    <span class="skill-tag">Git/GitHub</span>
-                </div>
-
-                <h3>IDIOMAS</h3>
-                <div class="lang-item">
-                    <span>Español</span>
-                    <span class="lang-level">Nativo</span>
-                </div>
-                <div class="lang-item">
-                    <span>Inglés</span>
-                    <span class="lang-level">Básico (A2)</span>
-                </div>
-
-                <h3>HOBBIES & INTERESES</h3>
-                <div class="skills-tags">
-                    <span class="skill-tag">🎨 Dibujo</span>
-                    <span class="skill-tag">⚽ Fútbol</span>
-                    <span class="skill-tag">🎮 Videojuegos</span>
-                    <span class="skill-tag">🤖 IA Generativa</span>
-                    <span class="skill-tag">✂️ Manualidades</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- COLUMNA DERECHA: Perfil, certificaciones, herramientas, habilidades personales, disponibilidad + Portafolio -->
-        <div class="cv-right">
-            <div>
-                <div class="cv-header">
-                    <h1>Daniela <span>Uscanga</span></h1>
-                    <div class="subtitle">Estudiante de Ingeniería en Sistemas | Desarrolladora Full-stack en formación</div>
-                    <div class="bio">
-                        Apasionada por el desarrollo web, la inteligencia artificial y el diseño digital. 
-                        Combino la lógica de programación con un enfoque creativo. Busco prácticas profesionales 
-                        para seguir desarrollando mis habilidades full-stack y contribuir a proyectos innovadores.
+    <div class="cv">
+        <div class="cv-inner">
+            <!-- COLUMNA IZQUIERDA: Contacto, Educación, Habilidades, Idiomas, Hobbies -->
+            <div class="cv-left">
+                <div>
+                    <div class="avatar">
+                        <!-- Nota: la imagen se referencia desde ./img/Perfil.jpeg, si no existe se puede mostrar un placeholder circular con iniciales. Se conserva tu ruta -->
+                        <img src="./img/Perfil.jpeg" alt="Daniela Uscanga"
+                            onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?background=8b6cb0&color=fff&name=DU&size=110&rounded=true';">
                     </div>
-                </div>
 
-                <!-- CERTIFICACIONES -->
-                <div class="section">
-                    <div class="section-title"><i class="fas fa-certificate"></i> CERTIFICACIONES</div>
-                    <div class="cert">
-                        <div>
-                            <div class="cert-name">CCNA: Introducción a las redes</div>
-                            <div class="cert-issuer">Cisco Networking Academy</div>
-                        </div>
-                        <div class="cert-date">2025</div>
-                    </div>
-                    <div class="cert">
-                        <div>
-                            <div class="cert-name">Linux Unhatched</div>
-                            <div class="cert-issuer">Cisco Networking Academy</div>
-                        </div>
-                        <div class="cert-date">2025</div>
-                    </div>
-                    <div class="cert">
-                        <div>
-                            <div class="cert-name">Fundamentos de IA</div>
-                            <div class="cert-issuer">IBM SkillsBuild / Cisco</div>
-                        </div>
-                        <div class="cert-date">2026</div>
-                    </div>
-                </div>
+                    <h3><i class="fas fa-address-card" style="margin-right: 6px;"></i> CONTACTO</h3>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-envelope"></i> uscangadaniela9@gmail.com</li>
+                        <li><i class="fas fa-phone-alt"></i> +52 636 109 9492</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Nuevo Casas Grandes, Chih.</li>
+                        <li><i class="fab fa-github"></i> github.com/DannyUR</li>
+                    </ul>
 
-                <!-- HERRAMIENTAS (grid espaciado) -->
-                <div class="section">
-                    <div class="section-title"><i class="fas fa-laptop-code"></i> HERRAMIENTAS</div>
-                    <div class="tools-grid">
-                        <span class="tool-badge">VS Code</span>
-                        <span class="tool-badge">Figma</span>
-                        <span class="tool-badge">Illustrator</span>
-                        <span class="tool-badge">Blender</span>
-                        <span class="tool-badge">Arduino IDE</span>
-                        <span class="tool-badge">Android Studio</span>
-                        <span class="tool-badge">CapCut/Filmora</span>
-                        <span class="tool-badge">Adobe Animate</span>
-                        <span class="tool-badge">MediBang/Krita</span>
-                        <span class="tool-badge">Clip Studio Paint</span>
-                        <span class="tool-badge">Canva</span>
-                        <span class="tool-badge">MS Office</span>
+                    <h3>EDUCACIÓN</h3>
+                    <div class="edu-item">
+                        <h4>Ingeniería en Sistemas Computacionales</h4>
+                        <div class="edu-date">2022 - Presente</div>
+                        <p>Instituto Tecnológico Superior de Nuevo Casas Grandes</p>
                     </div>
-                </div>
 
-                <!-- HABILIDADES PERSONALES (con diseño más suave) -->
-                <div class="section">
-                    <div class="section-title"><i class="fas fa-star"></i> HABILIDADES PERSONALES</div>
-                    <div class="tools-grid">
-                        <span class="soft-badge">Responsable</span>
-                        <span class="soft-badge">Aprendizaje Rápido</span>
-                        <span class="soft-badge">Aprendizaje Visual</span>
-                        <span class="soft-badge">Trabajo en Equipo</span>
-                        <span class="soft-badge">Autonomía</span>
-                        <span class="soft-badge">Creatividad</span>
-                        <span class="soft-badge">Comunicación</span>
+                    <h3>HABILIDADES TÉCNICAS</h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">Laravel</span>
+                        <span class="skill-tag">MySQL/MariaDB</span>
+                        <span class="skill-tag">Git/GitHub</span>
                     </div>
-                </div>
 
-                <!-- DISPONIBILIDAD (mejor estructura) -->
-                <div class="section">
-                    <div class="section-title"><i class="fas fa-calendar-alt"></i> DISPONIBILIDAD</div>
-                    <div class="availability-box">
-                        <p>✔️ Prácticas profesionales | Freelance</p>
-                        <p>📅 Incorporación: junio 2026 | Horario flexible</p>
-                        <p>⏱️ Horas y duración a convenir con la empresa</p>
-                        <p>📍 Base en Nuevo Casas Grandes, Chihuahua</p>
+                    <h3>IDIOMAS</h3>
+                    <div class="lang-item">
+                        <span>Español</span>
+                        <span class="lang-level">Nativo</span>
+                    </div>
+                    <div class="lang-item">
+                        <span>Inglés</span>
+                        <span class="lang-level">Básico (A2)</span>
+                    </div>
+
+                    <h3>HOBBIES & INTERESES</h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag">🎨 Dibujo</span>
+                        <span class="skill-tag">⚽ Fútbol</span>
+                        <span class="skill-tag">🎮 Videojuegos</span>
+                        <span class="skill-tag">🤖 IA Generativa</span>
+                        <span class="skill-tag">✂️ Manualidades</span>
                     </div>
                 </div>
             </div>
 
-            <!-- SECCIÓN PORTAFOLIO bien integrada al final -->
-            <div class="portfolio-box">
-                <div class="portfolio-content">
-                    <a href="https://dannyur.github.io/Portafolio/" target="_blank" class="portfolio-btn">
-                        <i class="fas fa-external-link-alt"></i> Visitar portafolio
-                    </a>
-                    <div class="qr-code">
-                        <!-- QR dinámico usando api.qrserver, apunta al portafolio -->
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://dannyur.github.io/Portafolio/" alt="QR Portafolio">
-                        <p>Escanear</p>
+            <!-- COLUMNA DERECHA: Perfil, certificaciones, herramientas, habilidades personales, disponibilidad + Portafolio -->
+            <div class="cv-right">
+                <div>
+                    <div class="cv-header">
+                        <h1>Daniela <span>Uscanga</span></h1>
+                        <div class="subtitle">Estudiante de Ingeniería en Sistemas · Desarrolladora web full-stack en
+                            formación</div>
+                        <div class="bio">
+                            Con experiencia práctica en HTML/CSS, JavaScript, React, PHP, Laravel y MySQL.
+                            Me especializo en construir interfaces visualmente atractivas y conectar el frontend
+                            con un backend funcional. Creativa, detallista y colaborativa.
+                            Busco prácticas en desarrollo full-stack y diseño web.
+                        </div>
+                    </div>
+
+                    <!-- CERTIFICACIONES -->
+                    <div class="section">
+                        <div class="section-title"><i class="fas fa-certificate"></i> CERTIFICACIONES</div>
+                        <div class="cert">
+                            <div>
+                                <div class="cert-name">CCNA: Introducción a las redes</div>
+                                <div class="cert-issuer">Cisco Networking Academy</div>
+                            </div>
+                            <div class="cert-date">2025</div>
+                        </div>
+                        <div class="cert">
+                            <div>
+                                <div class="cert-name">Linux Unhatched</div>
+                                <div class="cert-issuer">Cisco Networking Academy</div>
+                            </div>
+                            <div class="cert-date">2025</div>
+                        </div>
+                        <div class="cert">
+                            <div>
+                                <div class="cert-name">Fundamentos de IA</div>
+                                <div class="cert-issuer">IBM SkillsBuild / Cisco</div>
+                            </div>
+                            <div class="cert-date">2026</div>
+                        </div>
+                    </div>
+
+                    <!-- HERRAMIENTAS (grid espaciado) -->
+                    <div class="section">
+                        <div class="section-title"><i class="fas fa-laptop-code"></i> HERRAMIENTAS</div>
+                        <div class="tools-grid">
+                            <span class="tool-badge">VS Code</span>
+                            <span class="tool-badge">Figma</span>
+                            <span class="tool-badge">Illustrator</span>
+                            <span class="tool-badge">Blender</span>
+                            <span class="tool-badge">Arduino IDE</span>
+                            <span class="tool-badge">Android Studio</span>
+                            <span class="tool-badge">CapCut/Filmora</span>
+                            <span class="tool-badge">Adobe Animate</span>
+                            <span class="tool-badge">MediBang/Krita</span>
+                            <span class="tool-badge">Clip Studio Paint</span>
+                            <span class="tool-badge">Canva</span>
+                            <span class="tool-badge">MS Office</span>
+                        </div>
+                    </div>
+
+                    <!-- HABILIDADES PERSONALES (con diseño más suave) -->
+                    <div class="section">
+                        <div class="section-title"><i class="fas fa-star"></i> HABILIDADES PERSONALES</div>
+                        <div class="tools-grid">
+                            <span class="soft-badge">Responsable</span>
+                            <span class="soft-badge">Aprendizaje Rápido</span>
+                            <span class="soft-badge">Aprendizaje Visual</span>
+                            <span class="soft-badge">Trabajo en Equipo</span>
+                            <span class="soft-badge">Autonomía</span>
+                            <span class="soft-badge">Creatividad</span>
+                            <span class="soft-badge">Comunicación</span>
+                        </div>
+                    </div>
+
+                    <!-- DISPONIBILIDAD (mejor estructura) -->
+                    <div class="section">
+                        <div class="section-title"><i class="fas fa-calendar-alt"></i> DISPONIBILIDAD</div>
+                        <div class="availability-box">
+                            <p>✔️ Prácticas profesionales | Freelance</p>
+                            <p>📅 Incorporación: junio 2026 | Horario flexible</p>
+                            <p>⏱️ Horas y duración a convenir con la empresa</p>
+                            <p>📍 Base en Nuevo Casas Grandes, Chihuahua</p>
+                        </div>
                     </div>
                 </div>
-                <div class="portfolio-link-text">
-                    🔗 <a href="https://dannyur.github.io/Portafolio/" target="_blank">dannyur.github.io/Portafolio</a>
+
+                <!-- SECCIÓN PORTAFOLIO bien integrada al final -->
+                <div class="portfolio-box">
+                    <div class="portfolio-content">
+                        <a href="https://dannyur.github.io/Portafolio/" target="_blank" class="portfolio-btn">
+                            <i class="fas fa-external-link-alt"></i> Visitar portafolio
+                        </a>
+                        <div class="qr-code">
+                            <!-- QR dinámico usando api.qrserver, apunta al portafolio -->
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://dannyur.github.io/Portafolio/"
+                                alt="QR Portafolio">
+                            <p>Escanear</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-link-text">
+                        🔗 <a href="https://dannyur.github.io/Portafolio/"
+                            target="_blank">dannyur.github.io/Portafolio</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<button class="print-btn" onclick="window.print();">
-    <i class="fas fa-print"></i> Guardar / Imprimir PDF
-</button>
+    <button class="print-btn" onclick="window.print();">
+        <i class="fas fa-print"></i> Guardar / Imprimir PDF
+    </button>
 
-<script>
-    // Pequeña corrección para permitir que al imprimir el grid se respete en navegadores
-    (function() {
-        if (window.matchMedia) {
-            const printMedia = window.matchMedia('print');
-            const adjustPrintMargins = () => {
-                // sin acciones extra, solo garantizar que los estilos de impresión funcionan
-            };
-            printMedia.addListener(adjustPrintMargins);
-        }
-    })();
-</script>
+    <script>
+        // Pequeña corrección para permitir que al imprimir el grid se respete en navegadores
+        (function () {
+            if (window.matchMedia) {
+                const printMedia = window.matchMedia('print');
+                const adjustPrintMargins = () => {
+                    // sin acciones extra, solo garantizar que los estilos de impresión funcionan
+                };
+                printMedia.addListener(adjustPrintMargins);
+            }
+        })();
+    </script>
 </body>
+
 </html>
