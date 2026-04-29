@@ -10,7 +10,7 @@
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
         rel="stylesheet">
     <style>
-        /* ===== ESTILOS (sin cambios, igual que los tuyos) ===== */
+        /* ===== ESTILOS EXISTENTES ===== */
         * {
             margin: 0;
             padding: 0;
@@ -683,6 +683,7 @@
             border-radius: 28px;
             overflow: hidden;
             transition: all 0.4s ease;
+            cursor: pointer;
         }
 
         .project-card:hover {
@@ -762,19 +763,156 @@
             color: var(--lavender);
         }
 
+        /* === NUEVO: Contenedor de botones separados === */
+        .project-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+            align-items: center;
+        }
+
+        .view-gallery-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(180, 169, 212, 0.2);
+            border: 1px solid rgba(180, 169, 212, 0.3);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            color: var(--lavender);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .view-gallery-btn:hover {
+            background: var(--lavender);
+            color: var(--navy);
+        }
+
         .project-link {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             color: var(--gold-soft);
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 500;
             transition: gap 0.3s;
+            background: rgba(212, 175, 122, 0.15);
+            padding: 8px 16px;
+            border-radius: 30px;
         }
 
         .project-link:hover {
             gap: 12px;
+            background: rgba(212, 175, 122, 0.3);
+        }
+
+        /* ===== ESTILOS DEL MODAL CARRUSEL ===== */
+        .modal-carousel {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-carousel.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+            background: transparent;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel-prev,
+        .carousel-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 12px 18px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 10000;
+        }
+
+        .carousel-prev:hover,
+        .carousel-next:hover {
+            background: var(--lavender);
+            color: var(--navy);
+        }
+
+        .carousel-prev {
+            left: 20px;
+        }
+
+        .carousel-next {
+            right: 20px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10000;
+        }
+
+        .close-modal:hover {
+            color: var(--lavender);
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10000;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .indicator.active {
+            background: var(--lavender);
+            transform: scale(1.2);
         }
 
         .hobbies-grid {
@@ -1340,7 +1478,7 @@
             </div>
         </section>
 
-        <!-- WORK - PROYECTOS -->
+        <!-- WORK - PROYECTOS CON BOTONES SEPARADOS -->
         <section id="work" class="section">
             <div class="container">
                 <div class="section-header">
@@ -1351,8 +1489,8 @@
                 </div>
                 <div class="projects-grid">
 
-                    <!-- ARCHIMARKET3D - 2026 - En desarrollo + trabajo en equipo -->
-                    <div class="project-card">
+                    <!-- ARCHIMARKET3D - 2026 -->
+                    <div class="project-card" data-project="archimarket">
                         <div class="project-img">
                             <img src="./img/ArchiMarket3D.png" alt="ArchiMarket3D">
                         </div>
@@ -1362,12 +1500,11 @@
                                 <i class="fas fa-code-branch"></i> <span data-en="In development"
                                     data-es="En desarrollo">En desarrollo</span> · 2026
                             </div>
-                            <p data-en="Marketplace specialized in selling 3D models for architecture and design. Project developed as a pair-programming team, coordinating both web platform and mobile app. Includes integrated 3D viewer, purchase-validated review system, PayPal payments and three license types (Personal, Business, Unlimited)."
-                                data-es="Marketplace especializado en la venta de modelos 3D para arquitectura y diseño. Proyecto desarrollado en equipo (pareja), donde coordinamos tanto la plataforma web como la app móvil. Incluye visor 3D integrado, sistema de reseñas con validación de compra, pagos vía PayPal y tres tipos de licencia (Personal, Empresarial, Ilimitada).">
+                            <p data-en="Marketplace specialized in selling 3D models for architecture and design. Project developed as a pair-programming team, coordinating both web platform and mobile app. Includes integrated 3D viewer, purchase-validated review system, PayPal payments and three license types."
+                                data-es="Marketplace especializado en la venta de modelos 3D para arquitectura y diseño. Proyecto desarrollado en equipo (pareja), donde coordinamos tanto la plataforma web como la app móvil. Incluye visor 3D integrado, sistema de reseñas con validación de compra, pagos vía PayPal y tres tipos de licencia.">
                                 Marketplace especializado en la venta de modelos 3D para arquitectura y diseño.
                                 Proyecto desarrollado en equipo (pareja), donde coordinamos tanto la plataforma web
-                                como la app móvil. Incluye visor 3D integrado, sistema de reseñas con validación de
-                                compra, pagos vía PayPal y tres tipos de licencia (Personal, Empresarial, Ilimitada).
+                                como la app móvil.
                             </p>
                             <div class="project-tags">
                                 <span class="project-tag">Laravel</span>
@@ -1375,15 +1512,19 @@
                                 <span class="project-tag">React Native</span>
                                 <span class="project-tag">PayPal API</span>
                             </div>
-                            <a href="https://github.com/DannyUR/ArchiMarket3D" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> <span data-en="View code on GitHub"
-                                    data-es="Ver código en GitHub">Ver código en GitHub</span> →
-                            </a>
+                            <div class="project-buttons">
+                                <div class="view-gallery-btn" data-project="archimarket">
+                                    <i class="fas fa-images"></i> <span data-en="View gallery" data-es="Ver galería">Ver galería</span>
+                                </div>
+                                <a href="https://github.com/DannyUR/ArchiMarket3D" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> <span data-en="View code on GitHub" data-es="Ver código en GitHub">Ver código en GitHub</span> →
+                                </a>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- VELAMAR - 2025 - Completado + trabajo en equipo -->
-                    <div class="project-card">
+                    <!-- VELAMAR - 2025 -->
+                    <div class="project-card" data-project="velamar">
                         <div class="project-img">
                             <img src="./img/Velamar.png" alt="Velamar">
                         </div>
@@ -1396,9 +1537,7 @@
                             <p data-en="Web platform for apartment management at Residencias Velamar. Developed as a pair-programming team, enables admins to manage data through an administrative panel while clients access information via intuitive interface."
                                 data-es="Plataforma web para la administración de departamentos en Residencias Velamar. Desarrollado en equipo (pareja), permite al administrador gestionar datos mediante un panel administrativo y al cliente consultar información a través de una interfaz intuitiva.">
                                 Plataforma web para la administración de departamentos en Residencias Velamar.
-                                Desarrollado en equipo (pareja), permite al administrador gestionar datos mediante
-                                un panel administrativo y al cliente consultar información a través de una interfaz
-                                intuitiva.
+                                Desarrollado en equipo (pareja).
                             </p>
                             <div class="project-tags">
                                 <span class="project-tag">PHP</span>
@@ -1406,15 +1545,19 @@
                                 <span class="project-tag">JavaScript</span>
                                 <span class="project-tag">MariaDB</span>
                             </div>
-                            <a href="https://github.com/MagdielD901/velamar" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> <span data-en="View code on GitHub"
-                                    data-es="Ver código en GitHub">Ver código en GitHub</span> →
-                            </a>
+                            <div class="project-buttons">
+                                <div class="view-gallery-btn" data-project="velamar">
+                                    <i class="fas fa-images"></i> <span data-en="View gallery" data-es="Ver galería">Ver galería</span>
+                                </div>
+                                <a href="https://github.com/MagdielD901/velamar" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> <span data-en="View code on GitHub" data-es="Ver código en GitHub">Ver código en GitHub</span> →
+                                </a>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- ARTMOOD - 2025 - En desarrollo (corregido) -->
-                    <div class="project-card">
+                    <!-- ARTMOOD - 2025 -->
+                    <div class="project-card" data-project="artmood">
                         <div class="project-img">
                             <img src="./img/ArtMood.png" alt="ArtMood">
                         </div>
@@ -1424,11 +1567,10 @@
                                 <i class="fas fa-check-circle"></i> <span data-en="Completed"
                                     data-es="Completado">Completado</span> · 2025
                             </div>
-                            <p data-en="Interactive web app where artists can share illustrations, photographs and digital works associated with specific emotions. Fosters creative expression and connection among creators through comments and visual reactions."
-                                data-es="Aplicación web interactiva donde artistas pueden compartir ilustraciones, fotografías y obras digitales asociadas a emociones específicas. Fomenta la expresión creativa y conexión entre creadores mediante comentarios y reacciones visuales.">
-                                Aplicación web interactiva donde artistas pueden compartir ilustraciones, fotografías
-                                y obras digitales asociadas a emociones específicas. Fomenta la expresión creativa y
-                                conexión entre creadores mediante comentarios y reacciones visuales.
+                            <p data-en="Interactive web app where artists can share illustrations, photographs and digital works associated with specific emotions. Fosters creative expression and connection among creators."
+                                data-es="Aplicación web interactiva donde artistas pueden compartir ilustraciones, fotografías y obras digitales asociadas a emociones específicas. Fomenta la expresión creativa y conexión entre creadores.">
+                                Aplicación web interactiva donde artistas pueden compartir ilustraciones y obras digitales asociadas a emociones.
+                                Desarrollado en equipo (pareja).
                             </p>
                             <div class="project-tags">
                                 <span class="project-tag">React</span>
@@ -1436,15 +1578,19 @@
                                 <span class="project-tag">MySQL</span>
                                 <span class="project-tag">PHP</span>
                             </div>
-                            <a href="https://github.com/DannyUR/ArtMood" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> <span data-en="View code on GitHub"
-                                    data-es="Ver código en GitHub">Ver código en GitHub</span> →
-                            </a>
+                            <div class="project-buttons">
+                                <div class="view-gallery-btn" data-project="artmood">
+                                    <i class="fas fa-images"></i> <span data-en="View gallery" data-es="Ver galería">Ver galería</span>
+                                </div>
+                                <a href="https://github.com/DannyUR/ArtMood" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> <span data-en="View code on GitHub" data-es="Ver código en GitHub">Ver código en GitHub</span> →
+                                </a>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- RADIOCLICK - 2024 - En desarrollo -->
-                    <div class="project-card">
+                    <!-- RADIOCLICK - 2024 -->
+                    <div class="project-card" data-project="radioclick">
                         <div class="project-img">
                             <img src="./img/RadioClick.png" alt="RadioClick">
                         </div>
@@ -1454,21 +1600,23 @@
                                 <i class="fas fa-code-branch"></i> <span data-en="In development"
                                     data-es="En desarrollo">En desarrollo</span> · 2024
                             </div>
-                            <p data-en="Website to discover and listen to podcasts. Initial learning project that helped consolidate front-end web development fundamentals. Responsive design prototype with audio playback."
-                                data-es="Sitio web para descubrir y escuchar podcasts. Proyecto inicial de aprendizaje que permitió consolidar fundamentos de desarrollo web front-end. Prototipo con diseño responsivo y reproducción de audio.">
-                                Sitio web para descubrir y escuchar podcasts. Proyecto inicial de aprendizaje que
-                                permitió consolidar fundamentos de desarrollo web front-end. Prototipo con diseño
-                                responsivo y reproducción de audio.
+                            <p data-en="Website to discover and listen to podcasts. Initial learning project that helped consolidate front-end web development fundamentals."
+                                data-es="Sitio web para descubrir y escuchar podcasts. Proyecto inicial de aprendizaje que permitió consolidar fundamentos de desarrollo web front-end.">
+                                Sitio web para descubrir y escuchar podcasts. Proyecto inicial de aprendizaje front-end.
                             </p>
                             <div class="project-tags">
                                 <span class="project-tag">HTML</span>
                                 <span class="project-tag">CSS</span>
                                 <span class="project-tag">JavaScript</span>
                             </div>
-                            <a href="https://github.com/DannyUR/RadioClick" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> <span data-en="View code on GitHub"
-                                    data-es="Ver código en GitHub">Ver código en GitHub</span> →
-                            </a>
+                            <div class="project-buttons">
+                                <div class="view-gallery-btn" data-project="radioclick">
+                                    <i class="fas fa-images"></i> <span data-en="View gallery" data-es="Ver galería">Ver galería</span>
+                                </div>
+                                <a href="https://github.com/DannyUR/RadioClick" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> <span data-en="View code on GitHub" data-es="Ver código en GitHub">Ver código en GitHub</span> →
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -1508,31 +1656,24 @@
                     </div>
                 </div>
                 <div class="gallery-grid">
-                    <!-- Maceta Inteligente -->
                     <div class="gallery-item"><img src="./img/MacetaInteligente.png" alt="Smart Pot">
                         <div class="gallery-overlay">
                             <h4 data-en="Smart Pot" data-es="Maceta Inteligente">Maceta Inteligente</h4>
                             <p>Arduino · IoT</p>
                         </div>
                     </div>
-
-                    <!-- Adobe Illustrator -->
                     <div class="gallery-item"><img src="./img/AdobeIllustrator.png" alt="Illustrator">
                         <div class="gallery-overlay">
                             <h4 data-en="Adobe Illustrator" data-es="Adobe Illustrator">Adobe Illustrator</h4>
                             <p data-en="Vector design" data-es="Diseño vectorial">Diseño vectorial</p>
                         </div>
                     </div>
-
-                    <!-- Clickteam Fusion -->
                     <div class="gallery-item"><img src="./img/Plataforma.png" alt="Game dev">
                         <div class="gallery-overlay">
                             <h4 data-en="Clickteam Fusion" data-es="Clickteam Fusion">Clickteam Fusion</h4>
                             <p data-en="Game development" data-es="Desarrollo de juegos">Desarrollo de juegos</p>
                         </div>
                     </div>
-
-                    <!-- Animación 2D (GIF) -->
                     <div class="gallery-item">
                         <img src="./img/Un-dia-normal_o-no.gif" alt="2D Animation">
                         <div class="gallery-overlay">
@@ -1541,8 +1682,6 @@
                                 data-es="Adobe Animate · Animación en proceso">Adobe Animate · Animación en proceso</p>
                         </div>
                     </div>
-
-                    <!-- Papercraft / Origami -->
                     <div class="gallery-item">
                         <img src="./img/PapercraftKinbyMario.jpeg" alt="Papercraft figure">
                         <div class="gallery-overlay">
@@ -1551,8 +1690,6 @@
                                 Figura 3D · Paciencia y precisión</p>
                         </div>
                     </div>
-
-                    <!-- Manualidad reciente -->
                     <div class="gallery-item">
                         <img src="./img/ManualidadReciente.jpeg" alt="Handicraft">
                         <div class="gallery-overlay">
@@ -1560,8 +1697,6 @@
                             <p data-en="Creative expression" data-es="Expresión creativa">Expresión creativa</p>
                         </div>
                     </div>
-
-                    <!-- Figura 3D impresa -->
                     <div class="gallery-item">
                         <img src="./img/Figura3D_1.jpeg" alt="3D printed figure">
                         <div class="gallery-overlay">
@@ -1571,8 +1706,6 @@
                                 Imprimiendo figuras en 3D de algún personaje que nos guste</p>
                         </div>
                     </div>
-
-                    <!-- Dibujo a lápiz tradicional / lienzo -->
                     <div class="gallery-item">
                         <img src="./img/DibujoLienzo.jpeg" alt="Pencil drawing on canvas">
                         <div class="gallery-overlay">
@@ -1582,8 +1715,6 @@
                                 Personaje dibujado en lienzo con lápices de grafito</p>
                         </div>
                     </div>
-
-                    <!-- Ilustración digital -->
                     <div class="gallery-item">
                         <img src="./img/IlustracionDigital.png" alt="Digital illustration">
                         <div class="gallery-overlay">
@@ -1592,8 +1723,6 @@
                                 / Krita</p>
                         </div>
                     </div>
-
-                    <!-- Brazo robótico con servomotores -->
                     <div class="gallery-item">
                         <img src="./img/BrazoRobotico.jpeg" alt="Robotic arm with servomotors">
                         <div class="gallery-overlay">
@@ -1658,8 +1787,19 @@
         </section>
     </main>
 
+    <!-- MODAL PARA CARRUSEL DE IMÁGENES -->
+    <div id="projectModal" class="modal-carousel">
+        <span class="close-modal">&times;</span>
+        <button class="carousel-prev">&#10094;</button>
+        <button class="carousel-next">&#10095;</button>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Vista previa del proyecto">
+        </div>
+        <div class="carousel-indicators" id="carouselIndicators"></div>
+    </div>
+
     <script>
-        // Estrellas flotantes
+        // ==================== ESTRELLAS FLOTANTES ====================
         const starsContainer = document.getElementById('stars-container');
         for (let i = 0; i < 80; i++) {
             const star = document.createElement('div');
@@ -1673,35 +1813,30 @@
             starsContainer.appendChild(star);
         }
 
-        // Menú móvil
+        // ==================== MENÚ MÓVIL ====================
         document.querySelector('.menu-toggle')?.addEventListener('click', () => {
             document.querySelector('.nav-links')?.classList.toggle('active');
         });
 
-        // Navegación secciones (MEJORADA para también manejar botones del hero)
+        // ==================== NAVEGACIÓN POR SECCIONES ====================
         const sections = document.querySelectorAll('.section');
         const navLinks = document.querySelectorAll('.nav-links a');
 
         function showSection(id) {
-            // Remover active de todas las secciones
             sections.forEach(s => s.classList.remove('active-section'));
-            // Activar la sección objetivo
             const targetSection = document.querySelector(id);
             if (targetSection) {
                 targetSection.classList.add('active-section');
             }
-            // Actualizar clase active en el navbar
             navLinks.forEach(l => {
                 l.classList.remove('active');
                 if (l.getAttribute('href') === id) {
                     l.classList.add('active');
                 }
             });
-            // Scroll suave al inicio
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Eventos para enlaces del navbar
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1710,7 +1845,7 @@
             });
         });
 
-        // NUEVO: Eventos para los botones del hero (Contactar y Ver proyectos)
+        // Botones del hero
         const heroBtns = document.querySelectorAll('.hero-btns a');
         heroBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -1732,23 +1867,34 @@
             window.open('cv.html', '_blank');
         });
 
-        // Cambio de idioma (MEJORADO para también traducir textos dentro de spans y elementos con data-en/data-es)
+        // ==================== IDIOMA ====================
         let currentLang = 'es';
 
         function updateLanguage(lang) {
-            // Traducir elementos con atributo data-en y data-es
             document.querySelectorAll('[data-en][data-es]').forEach(el => {
-                // Si el elemento tiene hijos que no queremos sobrescribir, mejor manejar solo texto directo
-                // Pero en este caso, la mayoría son elementos con solo texto
-                if (el.children.length === 0 || el.tagName === 'P' || el.tagName === 'H3' || el.tagName === 'H4' || el.tagName === 'SPAN') {
+                if (el.children.length === 0 || el.tagName === 'P' || el.tagName === 'H3' || el.tagName === 'H4' || el.tagName === 'SPAN' || el.classList.contains('view-gallery-btn') || el.classList.contains('project-link')) {
                     const translation = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
                     if (translation !== null) {
-                        el.textContent = translation;
+                        // Mantener los íconos, solo cambiar texto
+                        if (el.classList.contains('view-gallery-btn')) {
+                            const icon = el.querySelector('i');
+                            if (icon) {
+                                const textNode = Array.from(el.childNodes).find(node => node.nodeType === 3);
+                                if (textNode) textNode.textContent = translation;
+                                else {
+                                    const span = document.createElement('span');
+                                    span.textContent = translation;
+                                    el.appendChild(span);
+                                }
+                            } else {
+                                el.textContent = translation;
+                            }
+                        } else {
+                            el.textContent = translation;
+                        }
                     }
                 }
             });
-
-            // Actualizar el texto del botón de idioma
             document.getElementById('langText').textContent = lang === 'en' ? 'EN' : 'ES';
             currentLang = lang;
         }
@@ -1757,7 +1903,7 @@
             updateLanguage(currentLang === 'es' ? 'en' : 'es');
         });
 
-        // Animación barras de skills
+        // ==================== ANIMACIÓN BARRAS SKILLS ====================
         const bars = document.querySelectorAll('.skill-progress');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(e => {
@@ -1770,6 +1916,168 @@
             });
         }, { threshold: 0.3 });
         bars.forEach(b => observer.observe(b));
+
+        // ==================== CARRUSEL PARA PROYECTOS ====================
+        const projectImages = {
+            archimarket: [
+                "./img/ArchiMarket3D_1.png",
+                "./img/ArchiMarket3D_2.png",
+                "./img/ArchiMarket3D_3.png",
+                "./img/ArchiMarket3D_4.png",
+                "./img/ArchiMarket3D_5.png",
+                "./img/ArchiMarket3D_6.png",
+                "./img/ArchiMarket3D_7.png",
+                "./img/ArchiMarket3D_8.png",
+                "./img/ArchiMarket3D_9.png",
+                "./img/ArchiMarket3D_10.png",
+                "./img/ArchiMarket3D_11.png",
+                "./img/ArchiMarket3D_12.png",
+                "./img/ArchiMarket3D_13.png",
+                "./img/ArchiMarket3D_14.png",
+                "./img/ArchiMarket3D_15.png",
+            ],
+            velamar: [
+                "./img/Velamar_1.png",
+                "./img/Velamar_2.png",
+                "./img/Velamar_3.png",
+                "./img/Velamar_4.png"
+            ],
+            artmood: [
+                "./img/ArtMood_1.png",
+                "./img/ArtMood_2.png",
+                "./img/ArtMood_3.png",
+                "./img/ArtMood_4.png",
+                "./img/ArtMood_5.png",
+                "./img/ArtMood_6.png",
+                "./img/ArtMood_7.png",
+                "./img/ArtMood_8.png",
+                "./img/ArtMood_9.png"
+            ],
+            radioclick: [
+                "./img/RadioClick_1.png",
+                "./img/RadioClick_2.png",
+                "./img/RadioClick_3.png",
+                "./img/RadioClick_4.png",
+                "./img/RadioClick_5.png",
+                "./img/RadioClick_6.png"
+            ]
+        };
+
+        let currentProjectId = null;
+        let currentImageIndex = 0;
+        let currentImagesArray = [];
+
+        const modal = document.getElementById('projectModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeModal = document.querySelector('.close-modal');
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+        const indicatorsContainer = document.getElementById('carouselIndicators');
+
+        function openProjectGallery(projectId, startIndex = 0) {
+            if (!projectImages[projectId]) {
+                console.warn(`No hay imágenes para el proyecto: ${projectId}`);
+                return;
+            }
+            currentProjectId = projectId;
+            currentImagesArray = projectImages[projectId];
+            currentImageIndex = startIndex;
+            updateModalImage();
+            updateIndicators();
+            modal.classList.add('active');
+        }
+
+        function updateModalImage() {
+            if (currentImagesArray[currentImageIndex]) {
+                modalImage.src = currentImagesArray[currentImageIndex];
+                modalImage.alt = `Imagen ${currentImageIndex + 1} de ${currentProjectId}`;
+            }
+        }
+
+        function updateIndicators() {
+            indicatorsContainer.innerHTML = '';
+            currentImagesArray.forEach((_, index) => {
+                const indicator = document.createElement('div');
+                indicator.classList.add('indicator');
+                if (index === currentImageIndex) {
+                    indicator.classList.add('active');
+                }
+                indicator.addEventListener('click', () => {
+                    currentImageIndex = index;
+                    updateModalImage();
+                    updateIndicators();
+                });
+                indicatorsContainer.appendChild(indicator);
+            });
+        }
+
+        function nextImage() {
+            if (currentImagesArray.length > 0) {
+                currentImageIndex = (currentImageIndex + 1) % currentImagesArray.length;
+                updateModalImage();
+                updateIndicators();
+            }
+        }
+
+        function prevImage() {
+            if (currentImagesArray.length > 0) {
+                currentImageIndex = (currentImageIndex - 1 + currentImagesArray.length) % currentImagesArray.length;
+                updateModalImage();
+                updateIndicators();
+            }
+        }
+
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            prevImage();
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nextImage();
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('active')) return;
+            if (e.key === 'ArrowLeft') {
+                prevImage();
+            } else if (e.key === 'ArrowRight') {
+                nextImage();
+            } else if (e.key === 'Escape') {
+                modal.classList.remove('active');
+            }
+        });
+
+        document.querySelectorAll('.view-gallery-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const projectId = btn.getAttribute('data-project');
+                if (projectId && projectImages[projectId]) {
+                    openProjectGallery(projectId);
+                }
+            });
+        });
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('.project-link')) return;
+                if (e.target.closest('.view-gallery-btn')) return;
+                const projectId = card.getAttribute('data-project');
+                if (projectId && projectImages[projectId]) {
+                    openProjectGallery(projectId);
+                }
+            });
+        });
     </script>
 </body>
 
